@@ -20,11 +20,14 @@ export default {
         payload: response,
       });
       // Login successfully
+      console.log('=========== login =========', response);
+
       if (response.status === 'ok') {
         reloadAuthorized();
         const urlParams = new URL(window.location.href);
         const params = getPageQuery();
         let { redirect } = params;
+        console.log('=========== login2 =========', redirect);
         if (redirect) {
           const redirectUrlParams = new URL(redirect);
           if (redirectUrlParams.origin === urlParams.origin) {
@@ -34,10 +37,9 @@ export default {
             }
           } else {
             window.location.href = redirect;
-            return;
           }
         }
-        yield put(routerRedux.replace(redirect || '/'));
+        yield put(routerRedux.replace(redirect || '/wework'));
       }
     },
     *logout(_, { put }) {
