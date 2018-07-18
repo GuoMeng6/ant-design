@@ -97,6 +97,18 @@ export default class LoginPage extends Component {
     this.interval = setInterval(() => {
       this.fetch();
     }, 4000);
+    let a = document.getElementById("alphasvg");
+    a.addEventListener("load",function(){
+
+        // get the inner DOM of alpha.svg
+        var svgDoc = a.contentDocument;
+        // get the inner element by id
+        var delta = svgDoc.getElementById("Rectangle-4");
+        // add behaviour
+        delta.addEventListener("mousedown",function(){
+            alert('hello world!')
+        }, false);
+    }, false);
   }
 
   getUrl() {
@@ -172,16 +184,7 @@ export default class LoginPage extends Component {
     console.log('======= list ====== ', this.state.list);
 
     return (
-      <div className={styles.main}>
-        {/* logo */}
-        <img src={require('./img/njbg.png')} />
-        <font className={styles.title}>6TH FLOOR</font>
-        <div className={styles.line} />
-        <font className={styles.text}>West Nanjing Rd</font>
-
-        {/* 注释 */}
-        <Key />
-      </div>
+      <iframe src={require("./img/20180710南京路演示界面@3x.svg")} width="1024" height="768" id="alphasvg"></iframe>
     );
   }
 }
