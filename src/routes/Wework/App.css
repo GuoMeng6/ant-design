@@ -1,0 +1,45 @@
+.Center {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.App {
+  width: 1000px;
+  height: 2400px;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.App2 {
+  width: 1000px;
+  height: 2400px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid #d4d4d6;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.Item {
+  width: 112px;
+  height: 54px;
+  background-color: black;
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -39,7 +39,7 @@ export default {
             window.location.href = redirect;
           }
         }
-        yield put(routerRedux.replace(redirect || '/wework'));
+        yield put(routerRedux.replace(redirect));
       }
     },
     *logout(_, { put }) {
