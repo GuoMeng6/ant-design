@@ -161,6 +161,11 @@ const menuData = [
     icon: 'dashboard',
     path: 'wework',
   },
+  {
+    name: 'weworkfun',
+    icon: 'dashboard',
+    path: 'weworkfun',
+  },
 ];
 
 function formatter(data, parentPath = '/', parentAuthority) {
