@@ -12,6 +12,10 @@ export default class LoginPage extends Component {
   };
 
   render() {
-    return <div className={styles.main} />;
+    return (
+      <div className={styles.main} >
+       <img src={require('./img/njbg.png')}/> 
+    </div>
+    );
   }
 }
