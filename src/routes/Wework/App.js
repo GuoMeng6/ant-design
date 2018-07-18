@@ -222,13 +222,13 @@ class App extends Component {
           <div style={styles.app2}>
             <Key />
             {/* <Door /> */}
-            <Line data={list.slice(0, 10)} title="第一排" />
+            {/* <Line data={list.slice(0, 10)} title="第一排" />
             <Line data={list.slice(10, 20)} title="第二排" />
             <Line data={list.slice(20, 30)} title="第三排" />
             <Line data={list.slice(30, 40)} title="第四排" />
             <Line data={list.slice(40, 50)} title="第五排" />
             <Line data={list.slice(50, 60)} title="第六排" />
-            <Line data={list.slice(60, 70)} title="第七排" />
+            <Line data={list.slice(60, 70)} title="第七排" /> */}
             {/* <Line data={list.slice(70, 80)} title="第八排" />
             <Line data={list.slice(80, 90)} title="第九排" />
             <Line data={list.slice(90, 100)} title="第十排" />
