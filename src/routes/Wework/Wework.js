@@ -184,7 +184,10 @@ export default class LoginPage extends Component {
     console.log('======= list ====== ', this.state.list);
 
     return (
-      <iframe src={require("./img/20180710南京路演示界面@3x.svg")} width="1024" height="768" id="alphasvg"></iframe>
+      <div className={styles.main}>
+        <iframe src={require("./img/20180710南京路演示界面@3x.svg")} width="1024px" height="768px" id="alphasvg"
+        frameborder="0" marginheight="0" marginwidth="0" scrolling="no"></iframe>
+      </div>
     );
   }
 }

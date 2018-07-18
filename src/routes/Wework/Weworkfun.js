@@ -173,12 +173,8 @@ export default class LoginPage extends Component {
 
     return (
       <div className={styles.main}>
-        {/* logo */}
-        <img src={require('./img/njbgfun.png')} />
-        <font className={styles.title1}>Beijing Fun</font>
-
-        {/* 注释 */}
-        <Key />
+        <iframe src={require("./img/20180711北京fun演示界面@3x.svg")} width="1024px" height="768px" id="alphasvg"
+        frameborder="0" marginheight="0" marginwidth="0" scrolling="no"></iframe>
       </div>
     );
   }
