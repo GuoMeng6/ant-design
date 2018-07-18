@@ -163,7 +163,7 @@ const menuData = [
   },
   {
     name: 'weworkfun',
-    icon: 'dashboard',
+    icon: 'check-circle-o',
     path: 'weworkfun',
   },
 ];
