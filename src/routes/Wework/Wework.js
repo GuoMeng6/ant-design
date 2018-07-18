@@ -99,14 +99,14 @@ export default class LoginPage extends Component {
     }, 4000);
     let a = document.getElementById("alphasvg");
     a.addEventListener("load",function(){
-
         // get the inner DOM of alpha.svg
         var svgDoc = a.contentDocument;
         // get the inner element by id
         var delta = svgDoc.getElementById("Rectangle-4");
         // add behaviour
         delta.addEventListener("mousedown",function(){
-            alert('hello world!')
+            delta.setAttribute('stroke','#ffffff');
+            delta.setAttribute('fill','#ffffff');
         }, false);
     }, false);
   }
