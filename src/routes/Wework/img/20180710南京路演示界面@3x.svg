@@ -108,116 +108,83 @@
             <rect id="Rectangle-4-Copy" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="200.5" y="1.5" width="23" height="23" rx="4"></rect>
         </g>
         <g id="桌子" transform="translate(352.000000, 128.000000)">
-            <g id="Group-4" transform="translate(366.000000, 0.000000)">
-                <rect id="桌" stroke="#F39C9C" fill="#FFD6D6" x="0.5" y="0.5" width="11" height="23"></rect>
-                <rect id="桌-copy-5" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="0.5" y="25.5" width="11" height="23"></rect>
-                <rect id="桌-copy" stroke="#F39C9C" fill="#FFD6D6" x="31.5" y="0.5" width="11" height="23"></rect>
-                <rect id="桌-copy-3" stroke="#F39C9C" fill="#FFD6D6" x="31.5" y="25.5" width="11" height="23"></rect>
-                <rect id="桌-copy-2" stroke="#F39C9C" fill="#FFD6D6" x="45.5" y="0.5" width="11" height="23"></rect>
-                <rect id="桌-copy-6" stroke="#F39C9C" fill="#FFD6D6" x="70.5" y="0.5" width="11" height="23"></rect>
-                <rect id="桌-copy-8" stroke="#F39C9C" fill="#FFD6D6" x="93.5" y="25.5" width="11" height="23"></rect>
-                <rect id="桌-copy-9" stroke="#F39C9C" fill="#FFD6D6" transform="translate(77.000000, 73.000000) rotate(90.000000) translate(-77.000000, -73.000000) " x="71.5" y="61.5" width="11" height="23"></rect>
-                <rect id="桌-copy-4" stroke="#F39C9C" fill="#FFD6D6" x="45.5" y="25.5" width="11" height="23"></rect>
-                <rect id="桌-copy-7" stroke="#F39C9C" fill="#FFD6D6" x="70.5" y="25.5" width="11" height="23"></rect>
-            </g>
-            <g id="Group" transform="translate(425.000000, 166.000000)">
-                <rect id="桌-copy-16" stroke="#F39C9C" fill="#FFD6D6" x="14.5" y="0.5" width="11" height="23"></rect>
-                <rect id="桌-copy-20" stroke="#F39C9C" fill="#FFD6D6" x="0.5" y="0.5" width="11" height="23"></rect>
-                <rect id="桌-copy-17" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="14.5" y="26.5" width="11" height="23"></rect>
-                <rect id="桌-copy-21" stroke="#F39C9C" fill="#FFD6D6" x="0.5" y="26.5" width="11" height="23"></rect>
-                <rect id="桌-copy-18" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="14.5" y="52.5" width="11" height="23"></rect>
-                <rect id="桌-copy-22" stroke="#F39C9C" fill="#FFD6D6" x="0.5" y="52.5" width="11" height="23"></rect>
-                <rect id="桌-copy-19" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="14.5" y="78.5" width="11" height="23"></rect>
-                <rect id="桌-copy-23" stroke="#F39C9C" fill="#FFD6D6" x="0.5" y="78.5" width="11" height="23"></rect>
-            </g>
-            <g id="Group-Copy-8" transform="translate(315.000000, 266.000000) rotate(90.000000) translate(-315.000000, -266.000000) translate(309.000000, 200.000000)" fill="#FFD6D6" stroke="#F39C9C">
-                <rect id="桌-copy-16" x="0.5" y="0.5" width="11" height="23"></rect>
-                <rect id="桌-copy-17" x="0.5" y="26.5" width="11" height="23"></rect>
-                <rect id="桌-copy-18" x="0.5" y="52.5" width="11" height="23"></rect>
-                <rect id="桌-copy-19" x="0.5" y="82.5" width="11" height="23"></rect>
-                <rect id="桌-copy-24" x="0.5" y="108.5" width="11" height="23"></rect>
-            </g>
-            <g id="Group-Copy-9" transform="translate(322.000000, 285.500000) rotate(90.000000) translate(-322.000000, -285.500000) translate(316.000000, 226.000000)">
-                <rect id="桌-copy-16" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="0.5" y="0.5" width="11" height="23"></rect>
-                <rect id="桌-copy-17" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="0.5" y="26.5" width="11" height="23"></rect>
-                <rect id="桌-copy-18" stroke="#F39C9C" fill="#FFD6D6" x="0.5" y="95.5" width="11" height="23"></rect>
-            </g>
-            <g id="Group-Copy" transform="translate(459.000000, 166.000000)" fill="#FFD6D6" stroke="#F39C9C">
-                <rect id="桌-copy-16" x="14.5" y="0.5" width="11" height="23"></rect>
-                <rect id="桌-copy-20" x="0.5" y="0.5" width="11" height="23"></rect>
-                <rect id="桌-copy-17" x="14.5" y="26.5" width="11" height="23"></rect>
-                <rect id="桌-copy-21" x="0.5" y="26.5" width="11" height="23"></rect>
-                <rect id="桌-copy-18" x="14.5" y="52.5" width="11" height="23"></rect>
-                <rect id="桌-copy-22" x="0.5" y="52.5" width="11" height="23"></rect>
-                <rect id="桌-copy-19" x="14.5" y="78.5" width="11" height="23"></rect>
-                <rect id="桌-copy-23" x="0.5" y="78.5" width="11" height="23"></rect>
-            </g>
-            <g id="Group-Copy-2" transform="translate(507.500000, 184.000000) rotate(90.000000) translate(-507.500000, -184.000000) translate(447.500000, 101.500000)" fill="#FFD6D6" stroke="#F39C9C">
-                <rect id="桌-copy-29" x="0.5" y="106.5" width="11" height="23"></rect>
-                <g id="Group-6" transform="translate(94.000000, 0.000000)">
-                    <rect id="桌-copy-16" x="14.5" y="0.5" width="11" height="23"></rect>
-                    <rect id="桌-copy-20" x="0.5" y="0.5" width="11" height="23"></rect>
-                    <rect id="桌-copy-17" x="14.5" y="26.5" width="11" height="23"></rect>
-                    <rect id="桌-copy-21" x="0.5" y="26.5" width="11" height="23"></rect>
-                    <rect id="桌-copy-18" x="14.5" y="52.5" width="11" height="23"></rect>
-                    <rect id="桌-copy-22" x="0.5" y="52.5" width="11" height="23"></rect>
-                </g>
-                <g id="Group-5" transform="translate(28.000000, 135.000000) rotate(90.000000) translate(-28.000000, -135.000000) translate(-2.000000, 123.000000)">
-                    <rect id="桌-copy-31" x="48.5" y="0.5" width="11" height="23"></rect>
-                    <rect id="桌-copy-32" x="34.5" y="0.5" width="11" height="23"></rect>
-                    <rect id="桌-copy-33" x="14.5" y="0.5" width="11" height="23"></rect>
-                    <rect id="桌-copy-34" x="0.5" y="0.5" width="11" height="23"></rect>
-                </g>
-            </g>
-            <g id="Group-Copy-10" transform="translate(341.000000, 332.000000) rotate(90.000000) translate(-341.000000, -332.000000) translate(328.000000, 294.000000)">
-                <rect id="桌-copy-16" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="14.5" y="0.5" width="11" height="23"></rect>
-                <rect id="桌-copy-20" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="0.5" y="0.5" width="11" height="23"></rect>
-                <rect id="桌-copy-17" stroke="#F39C9C" fill="#FFD6D6" x="14.5" y="26.5" width="11" height="23"></rect>
-                <rect id="桌-copy-21" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="0.5" y="26.5" width="11" height="23"></rect>
-                <rect id="桌-copy-18" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="14.5" y="52.5" width="11" height="23"></rect>
-                <rect id="桌-copy-22" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="0.5" y="52.5" width="11" height="23"></rect>
-            </g>
-            <g id="Group-Copy-6" transform="translate(550.000000, 305.000000) rotate(90.000000) translate(-550.000000, -305.000000) translate(525.000000, 292.000000)" fill="#FFD6D6" stroke="#F39C9C">
-                <g id="Group-2" transform="translate(25.000000, 13.000000) rotate(90.000000) translate(-25.000000, -13.000000) translate(12.000000, -12.000000)">
-                    <rect id="桌-copy-17" x="0.5" y="26.5" width="11" height="23"></rect>
-                    <rect id="桌-copy-25" x="14.5" y="26.5" width="11" height="23"></rect>
-                    <rect id="桌-copy-17" x="0.5" y="0.5" width="11" height="23"></rect>
-                    <rect id="桌-copy-26" x="14.5" y="0.5" width="11" height="23"></rect>
-                </g>
-            </g>
-            <g id="Group-Copy-12" transform="translate(552.000000, 305.000000) rotate(90.000000) translate(-552.000000, -305.000000) translate(539.000000, 293.000000)"></g>
-            <g id="Group-Copy-7" transform="translate(294.500000, 244.500000) rotate(90.000000) translate(-294.500000, -244.500000) translate(117.000000, -24.000000)" fill="#00A699" fill-opacity="0.200000018" stroke="#00A699">
-                <rect id="桌-copy-17" x="343.5" y="513.5" width="11" height="23"></rect>
-                <rect id="桌-copy-27" x="0.5" y="0.5" width="11" height="23"></rect>
-            </g>
-            <g id="Group-Copy-11" transform="translate(268.500000, 244.500000) rotate(90.000000) translate(-268.500000, -244.500000) translate(91.000000, -24.000000)" fill="#FFD6D6" stroke="#F39C9C">
-                <rect id="桌-copy-17" x="343.5" y="513.5" width="11" height="23"></rect>
-                <rect id="桌-copy-28" x="0.5" y="0.5" width="11" height="23"></rect>
-            </g>
-            <g id="Group-Copy-3" transform="translate(552.000000, 178.000000) rotate(90.000000) translate(-552.000000, -178.000000) translate(539.000000, 140.000000)">
-                <rect id="桌-copy-16" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="14.5" y="0.5" width="11" height="23"></rect>
-                <rect id="桌-copy-20" stroke="#F39C9C" fill="#FFD6D6" x="0.5" y="0.5" width="11" height="23"></rect>
-                <rect id="桌-copy-17" stroke="#F39C9C" fill="#FFD6D6" x="14.5" y="26.5" width="11" height="23"></rect>
-                <rect id="桌-copy-21" stroke="#F39C9C" fill="#FFD6D6" x="0.5" y="26.5" width="11" height="23"></rect>
-                <rect id="桌-copy-18" stroke="#F39C9C" fill="#FFD6D6" x="14.5" y="52.5" width="11" height="23"></rect>
-                <rect id="桌-copy-22" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="0.5" y="52.5" width="11" height="23"></rect>
-            </g>
-            <g id="Group-Copy-4" transform="translate(552.000000, 123.000000) rotate(90.000000) translate(-552.000000, -123.000000) translate(539.000000, 85.000000)" fill="#FFD6D6" stroke="#F39C9C">
-                <rect id="桌-copy-20" x="0.5" y="0.5" width="11" height="23"></rect>
-                <rect id="桌-copy-30" x="14.5" y="0.5" width="11" height="23"></rect>
-                <rect id="桌-copy-21" x="0.5" y="26.5" width="11" height="23"></rect>
-                <rect id="桌-copy-35" x="14.5" y="26.5" width="11" height="23"></rect>
-                <rect id="桌-copy-22" x="0.5" y="52.5" width="11" height="23"></rect>
-                <rect id="桌-copy-36" x="14.5" y="52.5" width="11" height="23"></rect>
-            </g>
-            <g id="Group-3" transform="translate(305.000000, 94.000000)">
-                <rect id="桌-copy-10" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" transform="translate(64.000000, 6.000000) rotate(90.000000) translate(-64.000000, -6.000000) " x="58.5" y="-5.5" width="11" height="23"></rect>
-                <rect id="桌-copy-13" stroke="#F39C9C" fill="#FFD6D6" transform="translate(64.000000, 20.000000) rotate(90.000000) translate(-64.000000, -20.000000) " x="58.5" y="8.5" width="11" height="23"></rect>
-                <rect id="桌-copy-11" stroke="#F39C9C" fill="#FFD6D6" transform="translate(38.000000, 6.000000) rotate(90.000000) translate(-38.000000, -6.000000) " x="32.5" y="-5.5" width="11" height="23"></rect>
-                <rect id="桌-copy-14" stroke="#F39C9C" fill="#FFD6D6" transform="translate(38.000000, 20.000000) rotate(90.000000) translate(-38.000000, -20.000000) " x="32.5" y="8.5" width="11" height="23"></rect>
-                <rect id="桌-copy-12" stroke="#F39C9C" fill="#FFD6D6" transform="translate(12.000000, 6.000000) rotate(90.000000) translate(-12.000000, -6.000000) " x="6.5" y="-5.5" width="11" height="23"></rect>
-                <rect id="桌-copy-15" stroke="#F39C9C" fill="#FFD6D6" transform="translate(12.000000, 20.000000) rotate(90.000000) translate(-12.000000, -20.000000) " x="6.5" y="8.5" width="11" height="23"></rect>
-            </g>
+            <rect id="桌" stroke="#F39C9C" fill="#FFD6D6" x="366.5" y="0.5" width="11" height="23"></rect>
+            <rect id="桌-copy-5" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="366.5" y="25.5" width="11" height="23"></rect>
+            <rect id="桌-copy" stroke="#F39C9C" fill="#FFD6D6" x="397.5" y="0.5" width="11" height="23"></rect>
+            <rect id="桌-copy-3" stroke="#F39C9C" fill="#FFD6D6" x="397.5" y="25.5" width="11" height="23"></rect>
+            <rect id="桌-copy-2" stroke="#F39C9C" fill="#FFD6D6" x="411.5" y="0.5" width="11" height="23"></rect>
+            <rect id="桌-copy-6" stroke="#F39C9C" fill="#FFD6D6" x="436.5" y="0.5" width="11" height="23"></rect>
+            <rect id="桌-copy-8" stroke="#F39C9C" fill="#FFD6D6" x="459.5" y="25.5" width="11" height="23"></rect>
+            <rect id="桌-copy-9" stroke="#F39C9C" fill="#FFD6D6" transform="translate(443.000000, 73.000000) rotate(90.000000) translate(-443.000000, -73.000000) " x="437.5" y="61.5" width="11" height="23"></rect>
+            <rect id="桌-copy-4" stroke="#F39C9C" fill="#FFD6D6" x="411.5" y="25.5" width="11" height="23"></rect>
+            <rect id="桌-copy-7" stroke="#F39C9C" fill="#FFD6D6" x="436.5" y="25.5" width="11" height="23"></rect>
+            <rect id="桌-copy-16" stroke="#F39C9C" fill="#FFD6D6" x="439.5" y="166.5" width="11" height="23"></rect>
+            <rect id="桌-copy-20" stroke="#F39C9C" fill="#FFD6D6" x="425.5" y="166.5" width="11" height="23"></rect>
+            <rect id="桌-copy-17" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="439.5" y="192.5" width="11" height="23"></rect>
+            <rect id="桌-copy-21" stroke="#F39C9C" fill="#FFD6D6" x="425.5" y="192.5" width="11" height="23"></rect>
+            <rect id="桌-copy-18" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="439.5" y="218.5" width="11" height="23"></rect>
+            <rect id="桌-copy-22" stroke="#F39C9C" fill="#FFD6D6" x="425.5" y="218.5" width="11" height="23"></rect>
+            <rect id="桌-copy-19" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="439.5" y="244.5" width="11" height="23"></rect>
+            <rect id="桌-copy-23" stroke="#F39C9C" fill="#FFD6D6" x="425.5" y="244.5" width="11" height="23"></rect>
+            <rect id="桌-copy-16" stroke="#F39C9C" fill="#FFD6D6" transform="translate(369.000000, 266.000000) rotate(90.000000) translate(-369.000000, -266.000000) " x="363.5" y="254.5" width="11" height="23"></rect>
+            <rect id="桌-copy-17" stroke="#F39C9C" fill="#FFD6D6" transform="translate(343.000000, 266.000000) rotate(90.000000) translate(-343.000000, -266.000000) " x="337.5" y="254.5" width="11" height="23"></rect>
+            <rect id="桌-copy-18" stroke="#F39C9C" fill="#FFD6D6" transform="translate(317.000000, 266.000000) rotate(90.000000) translate(-317.000000, -266.000000) " x="311.5" y="254.5" width="11" height="23"></rect>
+            <rect id="桌-copy-19" stroke="#F39C9C" fill="#FFD6D6" transform="translate(287.000000, 266.000000) rotate(90.000000) translate(-287.000000, -266.000000) " x="281.5" y="254.5" width="11" height="23"></rect>
+            <rect id="桌-copy-24" stroke="#F39C9C" fill="#FFD6D6" transform="translate(261.000000, 266.000000) rotate(90.000000) translate(-261.000000, -266.000000) " x="255.5" y="254.5" width="11" height="23"></rect>
+            <rect id="桌-copy-16" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" transform="translate(369.500000, 285.500000) rotate(90.000000) translate(-369.500000, -285.500000) " x="364" y="274" width="11" height="23"></rect>
+            <rect id="桌-copy-17" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" transform="translate(343.500000, 285.500000) rotate(90.000000) translate(-343.500000, -285.500000) " x="338" y="274" width="11" height="23"></rect>
+            <rect id="桌-copy-18" stroke="#F39C9C" fill="#FFD6D6" transform="translate(274.500000, 285.500000) rotate(90.000000) translate(-274.500000, -285.500000) " x="269" y="274" width="11" height="23"></rect>
+            <rect id="桌-copy-16" stroke="#F39C9C" fill="#FFD6D6" x="473.5" y="166.5" width="11" height="23"></rect>
+            <rect id="桌-copy-20" stroke="#F39C9C" fill="#FFD6D6" x="459.5" y="166.5" width="11" height="23"></rect>
+            <rect id="桌-copy-17" stroke="#F39C9C" fill="#FFD6D6" x="473.5" y="192.5" width="11" height="23"></rect>
+            <rect id="桌-copy-21" stroke="#F39C9C" fill="#FFD6D6" x="459.5" y="192.5" width="11" height="23"></rect>
+            <rect id="桌-copy-18" stroke="#F39C9C" fill="#FFD6D6" x="473.5" y="218.5" width="11" height="23"></rect>
+            <rect id="桌-copy-22" stroke="#F39C9C" fill="#FFD6D6" x="459.5" y="218.5" width="11" height="23"></rect>
+            <rect id="桌-copy-19" stroke="#F39C9C" fill="#FFD6D6" x="473.5" y="244.5" width="11" height="23"></rect>
+            <rect id="桌-copy-23" stroke="#F39C9C" fill="#FFD6D6" x="459.5" y="244.5" width="11" height="23"></rect>
+            <rect id="-copy-29" stroke="#F39C9C" fill="#FFD6D6" transform="translate(472.000000, 130.000000) rotate(90.000000) translate(-472.000000, -130.000000) " x="466.5" y="118.5" width="11" height="23"></rect>
+            <rect id="桌-copy-16" stroke="#F39C9C" fill="#FFD6D6" transform="translate(578.000000, 238.000000) rotate(90.000000) translate(-578.000000, -238.000000) " x="572.5" y="226.5" width="11" height="23"></rect>
+            <rect id="桌-copy-20" stroke="#F39C9C" fill="#FFD6D6" transform="translate(578.000000, 224.000000) rotate(90.000000) translate(-578.000000, -224.000000) " x="572.5" y="212.5" width="11" height="23"></rect>
+            <rect id="桌-copy-17" stroke="#F39C9C" fill="#FFD6D6" transform="translate(552.000000, 238.000000) rotate(90.000000) translate(-552.000000, -238.000000) " x="546.5" y="226.5" width="11" height="23"></rect>
+            <rect id="桌-copy-21" stroke="#F39C9C" fill="#FFD6D6" transform="translate(552.000000, 224.000000) rotate(90.000000) translate(-552.000000, -224.000000) " x="546.5" y="212.5" width="11" height="23"></rect>
+            <rect id="桌-copy-18" stroke="#F39C9C" fill="#FFD6D6" transform="translate(526.000000, 238.000000) rotate(90.000000) translate(-526.000000, -238.000000) " x="520.5" y="226.5" width="11" height="23"></rect>
+            <rect id="桌-copy-22" stroke="#F39C9C" fill="#FFD6D6" transform="translate(526.000000, 224.000000) rotate(90.000000) translate(-526.000000, -224.000000) " x="520.5" y="212.5" width="11" height="23"></rect>
+            <rect id="桌-copy-31" stroke="#F39C9C" fill="#FFD6D6" transform="translate(431.062618, 152.000000) rotate(180.000000) translate(-431.062618, -152.000000) " x="425.562618" y="140.5" width="11" height="23"></rect>
+            <rect id="桌-copy-32" stroke="#F39C9C" fill="#FFD6D6" transform="translate(445.062618, 152.000000) rotate(180.000000) translate(-445.062618, -152.000000) " x="439.562618" y="140.5" width="11" height="23"></rect>
+            <rect id="桌-copy-33" stroke="#F39C9C" fill="#FFD6D6" transform="translate(465.062618, 152.000000) rotate(180.000000) translate(-465.062618, -152.000000) " x="459.562618" y="140.5" width="11" height="23"></rect>
+            <rect id="桌-copy-34" stroke="#F39C9C" fill="#FFD6D6" transform="translate(479.062618, 152.000000) rotate(180.000000) translate(-479.062618, -152.000000) " x="473.562618" y="140.5" width="11" height="23"></rect>
+            <rect id="桌-copy-16" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" transform="translate(367.000000, 339.000000) rotate(90.000000) translate(-367.000000, -339.000000) " x="361.5" y="327.5" width="11" height="23"></rect>
+            <rect id="桌-copy-20" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" transform="translate(367.000000, 325.000000) rotate(90.000000) translate(-367.000000, -325.000000) " x="361.5" y="313.5" width="11" height="23"></rect>
+            <rect id="桌-copy-17" stroke="#F39C9C" fill="#FFD6D6" transform="translate(341.000000, 339.000000) rotate(90.000000) translate(-341.000000, -339.000000) " x="335.5" y="327.5" width="11" height="23"></rect>
+            <rect id="桌-copy-21" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" transform="translate(341.000000, 325.000000) rotate(90.000000) translate(-341.000000, -325.000000) " x="335.5" y="313.5" width="11" height="23"></rect>
+            <rect id="桌-copy-18" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" transform="translate(315.000000, 339.000000) rotate(90.000000) translate(-315.000000, -339.000000) " x="309.5" y="327.5" width="11" height="23"></rect>
+            <rect id="桌-copy-22" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" transform="translate(315.000000, 325.000000) rotate(90.000000) translate(-315.000000, -325.000000) " x="309.5" y="313.5" width="11" height="23"></rect>
+            <rect id="桌-copy-17" stroke="#F39C9C" fill="#FFD6D6" x="539.5" y="295.5" width="11" height="23"></rect>
+            <rect id="桌-copy-25" stroke="#F39C9C" fill="#FFD6D6" x="553.5" y="295.5" width="11" height="23"></rect>
+            <rect id="桌-copy-17" stroke="#F39C9C" fill="#FFD6D6" x="539.5" y="269.5" width="11" height="23"></rect>
+            <rect id="桌-copy-26" stroke="#F39C9C" fill="#FFD6D6" x="553.5" y="269.5" width="11" height="23"></rect>
+            <rect id="-copy-17" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" transform="translate(38.000000, 416.000000) rotate(90.000000) translate(-38.000000, -416.000000) " x="32.5" y="404.5" width="11" height="23"></rect>
+            <rect id="-copy-27" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" transform="translate(551.000000, 73.000000) rotate(90.000000) translate(-551.000000, -73.000000) " x="545.5" y="61.5" width="11" height="23"></rect>
+            <rect id="copy-17" stroke="#F39C9C" fill="#FFD6D6" transform="translate(12.000000, 416.000000) rotate(90.000000) translate(-12.000000, -416.000000) " x="6.5" y="404.5" width="11" height="23"></rect>
+            <rect id="-copy-28" stroke="#F39C9C" fill="#FFD6D6" transform="translate(525.000000, 73.000000) rotate(90.000000) translate(-525.000000, -73.000000) " x="519.5" y="61.5" width="11" height="23"></rect>
+            <rect id="桌-copy-16" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" transform="translate(578.000000, 185.000000) rotate(90.000000) translate(-578.000000, -185.000000) " x="572.5" y="173.5" width="11" height="23"></rect>
+            <rect id="桌-copy-20" stroke="#F39C9C" fill="#FFD6D6" transform="translate(578.000000, 171.000000) rotate(90.000000) translate(-578.000000, -171.000000) " x="572.5" y="159.5" width="11" height="23"></rect>
+            <rect id="桌-copy-17" stroke="#F39C9C" fill="#FFD6D6" transform="translate(552.000000, 185.000000) rotate(90.000000) translate(-552.000000, -185.000000) " x="546.5" y="173.5" width="11" height="23"></rect>
+            <rect id="桌-copy-21" stroke="#F39C9C" fill="#FFD6D6" transform="translate(552.000000, 171.000000) rotate(90.000000) translate(-552.000000, -171.000000) " x="546.5" y="159.5" width="11" height="23"></rect>
+            <rect id="桌-copy-18" stroke="#F39C9C" fill="#FFD6D6" transform="translate(526.000000, 185.000000) rotate(90.000000) translate(-526.000000, -185.000000) " x="520.5" y="173.5" width="11" height="23"></rect>
+            <rect id="桌-copy-22" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" transform="translate(526.000000, 171.000000) rotate(90.000000) translate(-526.000000, -171.000000) " x="520.5" y="159.5" width="11" height="23"></rect>
+            <rect id="桌-copy-20" stroke="#F39C9C" fill="#FFD6D6" transform="translate(578.000000, 116.000000) rotate(90.000000) translate(-578.000000, -116.000000) " x="572.5" y="104.5" width="11" height="23"></rect>
+            <rect id="桌-copy-30" stroke="#F39C9C" fill="#FFD6D6" transform="translate(578.000000, 130.000000) rotate(90.000000) translate(-578.000000, -130.000000) " x="572.5" y="118.5" width="11" height="23"></rect>
+            <rect id="桌-copy-21" stroke="#F39C9C" fill="#FFD6D6" transform="translate(552.000000, 116.000000) rotate(90.000000) translate(-552.000000, -116.000000) " x="546.5" y="104.5" width="11" height="23"></rect>
+            <rect id="桌-copy-35" stroke="#F39C9C" fill="#FFD6D6" transform="translate(552.000000, 130.000000) rotate(90.000000) translate(-552.000000, -130.000000) " x="546.5" y="118.5" width="11" height="23"></rect>
+            <rect id="桌-copy-22" stroke="#F39C9C" fill="#FFD6D6" transform="translate(526.000000, 116.000000) rotate(90.000000) translate(-526.000000, -116.000000) " x="520.5" y="104.5" width="11" height="23"></rect>
+            <rect id="桌-copy-36" stroke="#F39C9C" fill="#FFD6D6" transform="translate(526.000000, 130.000000) rotate(90.000000) translate(-526.000000, -130.000000) " x="520.5" y="118.5" width="11" height="23"></rect>
+            <rect id="桌-copy-10" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" transform="translate(369.000000, 100.000000) rotate(90.000000) translate(-369.000000, -100.000000) " x="363.5" y="88.5" width="11" height="23"></rect>
+            <rect id="桌-copy-13" stroke="#F39C9C" fill="#FFD6D6" transform="translate(369.000000, 114.000000) rotate(90.000000) translate(-369.000000, -114.000000) " x="363.5" y="102.5" width="11" height="23"></rect>
+            <rect id="桌-copy-11" stroke="#F39C9C" fill="#FFD6D6" transform="translate(343.000000, 100.000000) rotate(90.000000) translate(-343.000000, -100.000000) " x="337.5" y="88.5" width="11" height="23"></rect>
+            <rect id="桌-copy-14" stroke="#F39C9C" fill="#FFD6D6" transform="translate(343.000000, 114.000000) rotate(90.000000) translate(-343.000000, -114.000000) " x="337.5" y="102.5" width="11" height="23"></rect>
+            <rect id="桌-copy-12" stroke="#F39C9C" fill="#FFD6D6" transform="translate(317.000000, 100.000000) rotate(90.000000) translate(-317.000000, -100.000000) " x="311.5" y="88.5" width="11" height="23"></rect>
+            <rect id="桌-copy-15" stroke="#F39C9C" fill="#FFD6D6" transform="translate(317.000000, 114.000000) rotate(90.000000) translate(-317.000000, -114.000000) " x="311.5" y="102.5" width="11" height="23"></rect>
         </g>
         <g id="文字" transform="translate(162.000000, 207.000000)" fill="#929AA1" font-family="PingFang-SC-Regular, PingFang SC" font-size="10" font-weight="normal" letter-spacing="0.2222223">
             <text id="Booth">
