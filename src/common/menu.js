@@ -162,9 +162,19 @@ const menuData = [
     path: 'wework',
   },
   {
+    name: 'weworkclick',
+    icon: 'dashboard',
+    path: 'weworkclick',
+  },
+  {
     name: 'weworkfun',
     icon: 'check-circle-o',
     path: 'weworkfun',
+  },
+  {
+    name: 'weworkfunclick',
+    icon: 'check-circle-o',
+    path: 'weworkfunclick',
   },
 ];
 

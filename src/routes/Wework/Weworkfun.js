@@ -79,7 +79,7 @@ const params = [
 ];
 
 @connect(() => ({}))
-export default class LoginPage extends Component {
+export default class Weworkfun extends Component {
   constructor(props) {
     super(props);
     const defaultData = [];
@@ -173,7 +173,7 @@ export default class LoginPage extends Component {
 
     return (
       <div className={styles.main}>
-        <iframe src={require("./img/20180711北京fun演示界面@3x.svg")} width="1024px" height="768px" id="alphasvg"
+        <iframe src={require("./img/beijingroot.svg")} width="1024px" height="768px" id="alphasvg"
         frameborder="0" marginheight="0" marginwidth="0" scrolling="no"></iframe>
       </div>
     );

@@ -179,6 +179,12 @@ export const getRouterData = app => {
     '/weworkfun': {
       component: dynamicWrapper(app, [], () => import('../routes/Wework/Weworkfun')),
     },
+    '/weworkclick': {
+      component: dynamicWrapper(app, [], () => import('../routes/Wework/Weworkclick')),
+    },
+    '/weworkfunclick': {
+      component: dynamicWrapper(app, [], () => import('../routes/Wework/Weworkfunclick')),
+    },
     // '/user/:id': {
     //   component: dynamicWrapper(app, [], () => import('../routes/User/SomeComponent')),
     // },
