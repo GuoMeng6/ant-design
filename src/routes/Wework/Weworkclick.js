@@ -32,6 +32,10 @@ export default class Weworkclick extends Component {
       visible: false,
     });
   }
+  putUp(){
+    let url='https://wework2018apis.azure-api.cn/desk/deskStatusInfos?deskId=';
+    
+  }
   componentDidMount() {
     let _this=this;
     let a = document.getElementById("alphasvg");

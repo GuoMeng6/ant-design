@@ -57,7 +57,7 @@ export default class Weworkfunclick extends Component {
   render() {
     return (
       <div className={styles.main}>
-        <iframe src={require("./img/beijingroot.svg")} width="1024px" height="768px" id="alphasvg"
+        <iframe src={require("./img/beijingclick.svg")} width="1024px" height="768px" id="alphasvg"
         frameborder="0" marginheight="0" marginwidth="0" scrolling="no"></iframe>
         <Modal
           title="Basic Modal"
