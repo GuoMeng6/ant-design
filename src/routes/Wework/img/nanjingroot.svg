@@ -104,8 +104,8 @@
             <text id="Vacant" font-family="PingFang-SC-Light, PingFang SC" font-size="12" font-weight="300" letter-spacing="0.2666668" fill="#35536C">
                 <tspan x="232" y="18">Vacant</tspan>
             </text>
-            <rect id="Rectangle-4" stroke="#FF5A5F" fill-opacity="0.200000018" fill="#FF5A5F" x="89.5" y="1.5" width="23" height="23" rx="4"></rect>
-            <rect id="Rectangle-4-Copy" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="200.5" y="1.5" width="23" height="23" rx="4"></rect>
+            <rect id="tuli1" stroke="#FF5A5F" fill-opacity="0.200000018" fill="#FF5A5F" x="89.5" y="1.5" width="23" height="23" rx="4"></rect>
+            <rect id="tuli2" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="200.5" y="1.5" width="23" height="23" rx="4"></rect>
         </g>
         <g id="桌子" transform="translate(352.000000, 128.000000)">
             <rect id="desk" stroke="#F39C9C" fill="#FFD6D6" x="366.5" y="0.5" width="11" height="23"></rect>

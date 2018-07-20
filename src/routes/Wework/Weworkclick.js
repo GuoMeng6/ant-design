@@ -70,7 +70,7 @@ export default class Weworkclick extends Component {
   componentDidMount() {
     this.setToken();
     let _this=this;
-    let a = document.getElementById("alphasvg");
+    let a = document.getElementById("alphasvgc");
     a.addEventListener("load",function(){
         // get the inner DOM of alpha.svg
         let svgDoc = a.contentDocument;
@@ -93,7 +93,7 @@ export default class Weworkclick extends Component {
   render() {
     return (
       <div className={styles.main}>
-        <iframe src={require("./img/nanjingclick.svg")} width="1024px" height="768px" id="alphasvg"
+        <iframe src={require("./img/nanjingclick.svg")} width="1024px" height="768px" id="alphasvgc"
         frameborder="0" marginheight="0" marginwidth="0" scrolling="no"></iframe>
         <Modal
           title="Basic Modal"

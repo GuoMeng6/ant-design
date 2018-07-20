@@ -166,16 +166,16 @@ const menuData = [
     icon: 'dashboard',
     path: 'weworkclick',
   },
-  {
-    name: 'weworkfun',
-    icon: 'check-circle-o',
-    path: 'weworkfun',
-  },
-  {
-    name: 'weworkfunclick',
-    icon: 'check-circle-o',
-    path: 'weworkfunclick',
-  },
+  // {
+  //   name: 'weworkfun',
+  //   icon: 'check-circle-o',
+  //   path: 'weworkfun',
+  // },
+  // {
+  //   name: 'weworkfunclick',
+  //   icon: 'check-circle-o',
+  //   path: 'weworkfunclick',
+  // },
 ];
 
 function formatter(data, parentPath = '/', parentAuthority) {
