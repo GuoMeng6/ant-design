@@ -109,7 +109,6 @@ const params = [
 'a55b1848-f4f8-4d2b-8865-a041addded99',
 'b699115a-adc9-471b-a43b-8fa069fcfc7a',
 '135f866b-f0b1-4521-97c6-ee26b2cb7139',
-
 ];
 
 @connect(() => ({}))
