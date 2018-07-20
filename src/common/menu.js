@@ -161,11 +161,11 @@ const menuData = [
     icon: 'dashboard',
     path: 'wework',
   },
-  // {
-  //   name: 'weworkclick',
-  //   icon: 'dashboard',
-  //   path: 'weworkclick',
-  // },
+  {
+    name: 'weworkclick',
+    icon: 'dashboard',
+    path: 'weworkclick',
+  },
   // {
   //   name: 'weworkfun',
   //   icon: 'check-circle-o',
