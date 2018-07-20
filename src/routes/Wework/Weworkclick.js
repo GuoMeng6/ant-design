@@ -5,9 +5,12 @@ import { Input } from 'antd';
 import axios from 'axios';
 import styles from './Wework.less';
 
+
+const URL = 'https://wework2018apis.azure-api.cn';
+let AUTH_TOKEN = '';
 export default class Weworkclick extends Component {
-  state = { visible: false }
-  dask=''
+  state = { visible: false, desk:'' }
+  htmlId=''
 
   showModal = () => {
     this.setState({
@@ -15,28 +18,57 @@ export default class Weworkclick extends Component {
     });
   }
 
-  getDeskInfo(){
-    return desk;
+  onChange(desk){
+    this.setState({desk:desk.target.value});
   }
 
   handleOk = (e) => {
-    console.log(e);
+    this.putUp();
     this.setState({
       visible: false,
     });
   }
 
   handleCancel = (e) => {
-    console.log(e);
     this.setState({
       visible: false,
     });
   }
+  
+  setToken() {
+    axios({
+      methods: 'get',
+      url: `${URL}/reservation/getSource`,
+    }).then(response => {
+      if (response.status === 200) {
+        AUTH_TOKEN = response.data.data;
+      }
+    });
+  }
   putUp(){
-    let url='https://wework2018apis.azure-api.cn/desk/deskStatusInfos?deskId=';
-    
+    console.log(AUTH_TOKEN);
+    axios({
+      methods:'get',
+      url:`${URL}/desk/updateDeskHtmlId?htmlId=${this.htmlId}&deskId=${this.state.desk}`,
+      dataType: "json",
+      data:{
+        htmlId:this.htmlId,
+        deskId:this.state.desk
+      },
+      headers:{
+        Authorization: AUTH_TOKEN,
+        'Ocp-Apim-Trace': true,
+        'Content-type': 'application/x-www-form-urlencoded',
+      }
+    }).then((response)=>{
+      console.log(response);
+      this.htmlId='';
+      this.state.desk='';
+    });
+
   }
   componentDidMount() {
+    this.setToken();
     let _this=this;
     let a = document.getElementById("alphasvg");
     a.addEventListener("load",function(){
@@ -50,7 +82,7 @@ export default class Weworkclick extends Component {
               if(delta[i].getAttribute('fill')==='#FFD6D6' || delta[i].getAttribute('fill')==='#00A699' || delta[i].getAttribute('fill')==='#F5CECE' || delta[i].getAttribute('fill')==='#CCEDEB'){
                   delta[i].setAttribute('stroke','#654df6');
                   delta[i].setAttribute('fill','#654df6');
-                  // cs=delta[i].getAttribute('id');
+                  _this.htmlId=delta[i].getAttribute('id');
                   _this.showModal();
               }
           }, false);
@@ -69,7 +101,7 @@ export default class Weworkclick extends Component {
           onOk={this.handleOk}
           onCancel={this.handleCancel}
         >
-          <Input placeholder="请输入id" value={this.dask} />
+          <Input placeholder="请输入id" value={this.state.desk} onChange={this.onChange.bind(this)}/>
         </Modal>
        </div>
     );
