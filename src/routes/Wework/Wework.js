@@ -1,12 +1,6 @@
-import React, {
-  Component
-} from 'react';
-import {
-  connect
-} from 'dva';
-import {
-  Link
-} from 'dva/router';
+import React, { Component } from 'react';
+import { connect } from 'dva';
+import { Link } from 'dva/router';
 import axios from 'axios';
 
 import Key from './components/Key';
@@ -15,6 +9,7 @@ import styles from './Wework.less';
 const URL = 'https://wework2018apis.azure-api.cn';
 let AUTH_TOKEN = '';
 const params = [
+
 '40c546a5-c216-4f66-b537-2e26a0ddbdd7',
 '7b046bab-3972-4485-ab1d-24fbdc1f6a87',
 '5c7c2b29-2b22-4a53-adf9-5848a6ae98f1',
@@ -128,7 +123,7 @@ export default class Wework extends Component {
     for (let i = 0; i < 67; i++) {
       defaultData.push({
         active: false,
-        value: i + 1
+        value: i + 1,
       });
     }
     this.url = this.getUrl();
@@ -143,7 +138,8 @@ export default class Wework extends Component {
       this.fetch();
     }, 4000);
   }
-  componentWillUnMount(){
+
+  componentWillUnMount() {
     this.interval && clearInterval(this.interval);
   }
 
@@ -157,20 +153,21 @@ export default class Wework extends Component {
     return url;
   }
 
-  listen(id,stroke,fill){
-    let rect=document.getElementById('alphasvg').contentDocument.getElementsByTagName('rect');
-    for(let i=0;i<rect.length;i++){
-      if(rect[i].getAttribute('id')==id){
-        rect[i].setAttribute('stroke',`${stroke}`);
-        rect[i].setAttribute('fill',`${fill}`);
-        rect[i].setAttribute('fill-opacity','1');
+  listen(id, stroke, fill) {
+    const rect = document.getElementById('alphasvg').contentDocument.getElementsByTagName('rect');
+    for (let i = 0; i < rect.length; i++) {
+      if (rect[i].getAttribute('id') == id) {
+        rect[i].setAttribute('stroke', `${stroke}`);
+        rect[i].setAttribute('fill', `${fill}`);
+        rect[i].setAttribute('fill-opacity', '1');
       }
     }
   }
-  //0无人  1有人  2离线
-  peopleSensor(data){
-    const {humansensor,status} = data.deviceTwin;
-    if(status === '离线'){ 
+
+  // 0无人  1有人  2离线
+  peopleSensor(data) {
+    const { humansensor, status } = data.deviceTwin;
+    if (status === '离线') {
       return 2;
     }
     return humansensor;
@@ -189,7 +186,7 @@ export default class Wework extends Component {
   }
 
   fetch() {
-    let that=this;
+    const that = this;
     axios({
       methods: 'get',
       url: this.url,
@@ -198,47 +195,49 @@ export default class Wework extends Component {
         'Ocp-Apim-Trace': true,
         'Content-type': 'application/x-www-form-urlencoded',
       },
-    }).then(response => {
-      if (response.status === 200) {
-        let all=response.data.data;
-        for(let i=0;i<all.length;i++){
-          let count = 0;
-          for(let j=0;j<all[i]['devices'].length;j++){
-            if(that.peopleSensor(all[i]['devices'][j]) === 1){
-              that.listen(`${all[i].htmlId}`,'#FA7676','#F5CECE');
-              return;
-            }
-            if(that.peopleSensor(all[i]['devices'][j]) === 0){
-              that.listen(`${all[i].htmlId}`,'#00A699','#00A699');
-            }
-            if(that.peopleSensor(all[i]['devices'][j]) === 2){
-              count ++;
-              if(count === all[i]['devices'].length){
-                that.listen(`${all[i].htmlId}`,'#666666','#cccccc');
+    })
+      .then(response => {
+        if (response.status === 200) {
+          const all = response.data.data;
+          for (let i = 0; i < all.length; i++) {
+            let count = 0;
+            for (let j = 0; j < all[i].devices.length; j++) {
+              if (that.peopleSensor(all[i].devices[j]) === 1) {
+                that.listen(`${all[i].htmlId}`, '#FA7676', '#F5CECE');
+                return;
+              }
+              if (that.peopleSensor(all[i].devices[j]) === 0) {
+                that.listen(`${all[i].htmlId}`, '#00A699', '#00A699');
+              }
+              if (that.peopleSensor(all[i].devices[j]) === 2) {
+                count++;
+                if (count === all[i].devices.length) {
+                  that.listen(`${all[i].htmlId}`, '#666666', '#cccccc');
+                }
               }
             }
           }
-
-
         }
-      }
-    }).catch((err, err2) => {
-      console.log('======== err ========', err, err2);
-      // this.setToken();
-    });
+      })
+      .catch((err, err2) => {
+        console.log('======== err ========', err, err2);
+        // this.setToken();
+      });
   }
 
   render() {
-    return ( 
-      <div className = {styles.main}>
-        <iframe src = {require("./img/nanjingroot.svg")}
-          width = "1024px"
-          height = "768px"
-          id = "alphasvg"
-          frameborder = "0"
-          marginheight = "0"
-          marginwidth = "0"
-          scrolling = "no"></iframe> 
+    return (
+      <div className={styles.main}>
+        <iframe
+          src="http://140.143.241.207:8080/svg/static/nanjing.58b9cf80.svg"
+          width="1024px"
+          height="768px"
+          id="alphasvg"
+          frameBorder="0"
+          marginHeight="0"
+          marginWidth="0"
+          scrolling="no"
+        />
       </div>
     );
   }
