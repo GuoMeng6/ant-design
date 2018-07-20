@@ -143,13 +143,13 @@ export default class Wework extends Component {
     return url;
   }
 
-  listen(id, stroke, fill) {
+  listen(id, stroke, fill, opacity) {
     const rect = document.getElementById('alphasvg').contentDocument.getElementsByTagName('rect');
     for (let i = 0; i < rect.length; i++) {
       if (rect[i].getAttribute('id') == id) {
         rect[i].setAttribute('stroke', `${stroke}`);
         rect[i].setAttribute('fill', `${fill}`);
-        rect[i].setAttribute('fill-opacity', '1');
+        rect[i].setAttribute('fill-opacity', opacity);
       }
     }
   }
@@ -193,16 +193,16 @@ export default class Wework extends Component {
             let count = 0;
             for (let j = 0; j < all[i].devices.length; j++) {
               if (that.peopleSensor(all[i].devices[j]) === 1) {
-                that.listen(`${all[i].htmlId}`, '#FA7676', '#F5CECE');
+                that.listen(`${all[i].htmlId}`, '#FA7676', '#F5CECE', 1);
                 break;
               }
-              if (that.peopleSensor(all[i].devices[j]) === 0) {
-                that.listen(`${all[i].htmlId}`, '#00A699', '#00A699');
+              if (that.peopleSensor(all[i].devices[j]) === '0') {
+                that.listen(`${all[i].htmlId}`, '#00A699', '#00A699', 0.2);
               }
               if (that.peopleSensor(all[i].devices[j]) === 2) {
                 count++;
                 if (count === all[i].devices.length) {
-                  that.listen(`${all[i].htmlId}`, '#666666', '#cccccc');
+                  that.listen(`${all[i].htmlId}`, '#666666', '#cccccc', 1);
                 }
               }
             }
