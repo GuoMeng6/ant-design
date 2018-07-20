@@ -151,8 +151,6 @@ export default class Weworkclick extends Component {
     });
   }
   putUp(){
-    number++;
-    this.state.desk=params[number];
     axios({
       methods:'get',
       url:`${URL}/desk/updateDeskHtmlId?htmlId=${this.htmlId}&deskId=${this.state.desk}`,
@@ -167,6 +165,8 @@ export default class Weworkclick extends Component {
         'Content-type': 'application/x-www-form-urlencoded',
       }
     }).then((response)=>{
+      number++;
+      this.state.desk=params[number];
       this.htmlId='';
     });
 
