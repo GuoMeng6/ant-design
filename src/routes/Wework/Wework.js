@@ -219,7 +219,7 @@ export default class Wework extends Component {
     return (
       <div className={styles.main}>
         <iframe
-          src={require('./img/nanjingroot.svg')}
+          src="http://140.143.241.207:8080/svg/static/nanjing.58b9cf80.svg"
           width="1024px"
           height="768px"
           id="alphasvg"
