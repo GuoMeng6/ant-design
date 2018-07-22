@@ -189,9 +189,16 @@ export default class Wework extends Component {
       .then(response => {
         if (response.status === 200) {
           const all = response.data.data;
+          // console.log('========== all ========== ', all);
           for (let i = 0; i < all.length; i++) {
             let count = 0;
+            // if (all[i].htmlId === 'Rectangle-4-Copy') {
+            //   console.log('========== all[i].devices ======= ', all[i].devices);
+            // }
             for (let j = 0; j < all[i].devices.length; j++) {
+              // if (all[i].htmlId === 'Rectangle-4-Copy') {
+              //   console.log('========== 121212 ======= ', that.peopleSensor(all[i].devices[j]));
+              // }
               if (that.peopleSensor(all[i].devices[j]) === 1) {
                 that.listen(`${all[i].htmlId}`, '#FA7676', '#F5CECE', 1);
                 break;
@@ -219,7 +226,8 @@ export default class Wework extends Component {
     return (
       <div className={styles.main}>
         <iframe
-          src="http://140.143.241.207:8080/svg/static/nanjing.58b9cf80.svg"
+          src="http://140.143.241.207:8080/svg/static/nanjing.svg"
+          // src={require('./img/nanjing.svg')}
           width="1024px"
           height="768px"
           id="alphasvg"

@@ -189,7 +189,7 @@ export default class Weworkclick extends Component {
   render() {
     return (
       <div className={styles.main}>
-        <iframe src={require("./img/nanjingclick.svg")} width="1024px" height="768px" id="alphasvgc"
+        <iframe src={require("./img/nanjingroot.svg")} width="1024px" height="768px" id="alphasvgc"
         frameborder="0" marginheight="0" marginwidth="0" scrolling="no"></iframe>
         <Modal
           title="Basic Modal"
