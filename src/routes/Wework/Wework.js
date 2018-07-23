@@ -189,16 +189,9 @@ export default class Wework extends Component {
       .then(response => {
         if (response.status === 200) {
           const all = response.data.data;
-          // console.log('========== all ========== ', all);
           for (let i = 0; i < all.length; i++) {
             let count = 0;
-            // if (all[i].htmlId === 'Rectangle-4-Copy') {
-            //   console.log('========== all[i].devices ======= ', all[i].devices);
-            // }
             for (let j = 0; j < all[i].devices.length; j++) {
-              // if (all[i].htmlId === 'Rectangle-4-Copy') {
-              //   console.log('========== 121212 ======= ', that.peopleSensor(all[i].devices[j]));
-              // }
               if (that.peopleSensor(all[i].devices[j]) === 1) {
                 that.listen(`${all[i].htmlId}`, '#FA7676', '#F5CECE', 1);
                 break;
