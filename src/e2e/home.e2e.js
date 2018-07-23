@@ -7,7 +7,7 @@ describe('Homepage', () => {
     await page.goto('http://140.143.241.207:8000', { waitUntil: 'networkidle2' });
     await page.waitForSelector('h1');
     const text = await page.evaluate(() => document.body.innerHTML);
-    expect(text).toContain('<h1>Ant Design Pro</h1>');
+    expect(text).toContain('<h1>9AM x WeWork</h1>');
     await page.close();
     browser.close();
   });
