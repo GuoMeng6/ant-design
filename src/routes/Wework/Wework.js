@@ -129,8 +129,14 @@ export default class Wework extends Component {
     }, 4000);
   }
 
-  componentWillUnMount() {
-    console.log('********* Wework ******** componentWillUnMount');
+  clearInterval() {
+    this.interval && clearInterval(this.interval);
+    this.interval = null;
+  }
+
+  componentWillUnmount() {
+    console.log('************ Wewrok componentWillUnmount **********');
+
     this.interval && clearInterval(this.interval);
   }
 
@@ -182,13 +188,13 @@ export default class Wework extends Component {
     }).then(response => {
       if (response.status === 200) {
         AUTH_TOKEN = response.data.data;
-        this.fetch();
       }
     });
   }
 
   fetch() {
     const that = this;
+    console.log('******** fetch **********');
     axios({
       methods: 'get',
       url: this.url,
@@ -222,7 +228,6 @@ export default class Wework extends Component {
         }
       })
       .catch((err, err2) => {
-        console.log('======== err ========', err, err2);
         this.setToken();
       });
   }

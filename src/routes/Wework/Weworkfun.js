@@ -73,7 +73,7 @@ export default class Wework extends Component {
     }, 4000);
   }
 
-  componentWillUnMount() {
+  componentWillUnmount() {
     this.interval && clearInterval(this.interval);
   }
 
