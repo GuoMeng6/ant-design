@@ -126,9 +126,9 @@ export default class Analysis2 extends Component {
       alert('请输入deskId');
       return
     }
-    let url='';
-    if(!this.from){
-      url= `${URL}/data/statusList?deskId=${this.state.input}`
+    let url=`${URL}/data/statusList?deskId=${this.state.input}`;
+    if(this.from){
+      url= `${URL}/data/statusList?deskId=${this.state.input}&startTime=${this.from}&endTime=${this.to}`
     }
     axios({
       methods: 'get',
