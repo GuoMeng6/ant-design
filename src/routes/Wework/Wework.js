@@ -153,7 +153,8 @@ export default class Wework extends Component {
         rect[i].setAttribute('fill-opacity', opacity);
         //为小方块绑定click事件
         rect[i].onclick=function(){
-          window.location.href='#/analysis2';
+          console.log(window.location.origin);
+          window.location.href=window.location.origin+'/#/analysis2';
         }
       }
       
