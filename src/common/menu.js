@@ -176,6 +176,11 @@ const menuData = [
   //   icon: 'check-circle-o',
   //   path: 'weworkfunclick',
   // },
+  {
+    name: '分析',
+    icon: 'dashboard',
+    path: 'analysis2',
+  },
 ];
 
 function formatter(data, parentPath = '/', parentAuthority) {
