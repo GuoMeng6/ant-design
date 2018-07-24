@@ -147,10 +147,17 @@ export default class Wework extends Component {
     const rect = document.getElementById('alphasvg').contentDocument.getElementsByTagName('rect');
     for (let i = 0; i < rect.length; i++) {
       if (rect[i].getAttribute('id') == id) {
+        // 循环改变颜色
         rect[i].setAttribute('stroke', `${stroke}`);
         rect[i].setAttribute('fill', `${fill}`);
         rect[i].setAttribute('fill-opacity', opacity);
+        //为小方块绑定click事件
+        rect[i].onclick=function(){
+          window.location.href='/';
+        }
       }
+      
+
     }
   }
 
