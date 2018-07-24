@@ -15,6 +15,7 @@ export default {
     salesTypeDataOffline: [],
     radarData: [],
     loading: false,
+    deskId: '',
   },
 
   effects: {
@@ -41,6 +42,14 @@ export default {
       return {
         ...state,
         ...payload,
+      };
+    },
+    updateDeskId(state, { payload }) {
+      console.log('*********** update ********* ', { state, payload });
+
+      return {
+        ...state,
+        deskId: payload,
       };
     },
     clear() {

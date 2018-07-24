@@ -43,10 +43,9 @@ export default class Analysis2 extends Component {
   };
 
   componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch({
-      type: 'chart/fetch',
-    });
+    const { dispatch, chart } = this.props;
+    console.log(' ********* Analysis ******** ', chart);
+    this.setState({ input: chart.deskId });
   }
 
   componentWillUnmount() {

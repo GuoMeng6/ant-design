@@ -130,6 +130,7 @@ export default class Wework extends Component {
   }
 
   componentWillUnMount() {
+    console.log('********* Wework ******** componentWillUnMount');
     this.interval && clearInterval(this.interval);
   }
 
@@ -143,7 +144,8 @@ export default class Wework extends Component {
     return url;
   }
 
-  listen(id, stroke, fill, opacity) {
+  listen(id, stroke, fill, opacity, deskId) {
+    const that = this;
     const rect = document.getElementById('alphasvg').contentDocument.getElementsByTagName('rect');
     for (let i = 0; i < rect.length; i++) {
       if (rect[i].getAttribute('id') == id) {
@@ -151,15 +153,17 @@ export default class Wework extends Component {
         rect[i].setAttribute('stroke', `${stroke}`);
         rect[i].setAttribute('fill', `${fill}`);
         rect[i].setAttribute('fill-opacity', opacity);
-        //为小方块绑定click事件
-        rect[i].onclick=function(){
-          console.log(window.location.origin);
-          window.location.href=window.location.origin+'/#/analysis2';
-        }
+        // 为小方块绑定click事件
+        rect[i].onclick = function() {
+          that.updateChart(deskId);
+          window.location.href = `${window.location.origin}/#/analysis2`;
+        };
       }
-      
-
     }
+  }
+
+  updateChart(value) {
+    this.props.dispatch({ type: 'chart/updateDeskId', payload: value });
   }
 
   // 0无人  1有人  2离线
@@ -201,16 +205,16 @@ export default class Wework extends Component {
             let count = 0;
             for (let j = 0; j < all[i].devices.length; j++) {
               if (that.peopleSensor(all[i].devices[j]) === 1) {
-                that.listen(`${all[i].htmlId}`, '#FA7676', '#F5CECE', 1);
+                that.listen(`${all[i].htmlId}`, '#FA7676', '#F5CECE', 1, all[i].id);
                 break;
               }
               if (that.peopleSensor(all[i].devices[j]) === '0') {
-                that.listen(`${all[i].htmlId}`, '#00A699', '#00A699', 0.2);
+                that.listen(`${all[i].htmlId}`, '#00A699', '#00A699', 0.2, all[i].id);
               }
               if (that.peopleSensor(all[i].devices[j]) === 2) {
                 count++;
                 if (count === all[i].devices.length) {
-                  that.listen(`${all[i].htmlId}`, '#666666', '#cccccc', 1);
+                  that.listen(`${all[i].htmlId}`, '#666666', '#cccccc', 1, all[i].id);
                 }
               }
             }

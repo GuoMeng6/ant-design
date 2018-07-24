@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="1024px" height="768px" viewBox="0 0 1024 768" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
     <title>20180710南京路演示界面@3x</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
@@ -14,6 +14,19 @@
                 <tspan x="0" y="60">West Nanjing Rd</tspan>
             </text>
             <path d="M1,40 L160.028299,40" id="Path" stroke="#DEDEDE" stroke-width="2"></path>
+        </g>
+        <g id="图例" transform="translate(688.000000, 710.000000)">
+            <text id="Legend" font-family="PingFang-SC-Regular, PingFang SC" font-size="18" font-weight="normal" letter-spacing="0.4000001" fill="#35536C">
+                <tspan x="0" y="19">Legend</tspan>
+            </text>
+            <text id="Occupied" font-family="PingFang-SC-Light, PingFang SC" font-size="12" font-weight="300" letter-spacing="0.2666668" fill="#35536C">
+                <tspan x="121" y="18">Occupied</tspan>
+            </text>
+            <text id="Vacant" font-family="PingFang-SC-Light, PingFang SC" font-size="12" font-weight="300" letter-spacing="0.2666668" fill="#35536C">
+                <tspan x="232" y="18">Vacant</tspan>
+            </text>
+            <rect id="tuli1" stroke="#FF5A5F" fill-opacity="0.200000018" fill="#FF5A5F" x="89.5" y="1.5" width="23" height="23" rx="4"></rect>
+            <rect id="tuli2" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="200.5" y="1.5" width="23" height="23" rx="4"></rect>
         </g>
         <g id="建筑" transform="translate(79.000000, 123.000000)">
             <g id="室" fill="#F2F2F2">
@@ -94,28 +107,15 @@
             <rect id="Rectangle-4-Copy-8" stroke="#FA7676" fill="#F5CECE" transform="translate(60.000000, 168.500000) rotate(90.000000) translate(-60.000000, -168.500000) " x="55.5" y="158.5" width="9" height="20"></rect>
             <rect id="Rectangle-4-Copy-13" stroke="#FA7676" fill="#F5CECE" transform="translate(60.000000, 157.500000) rotate(90.000000) translate(-60.000000, -157.500000) " x="55.5" y="147.5" width="9" height="20"></rect>
         </g>
-        <g id="图例" transform="translate(688.000000, 710.000000)">
-            <text id="Legend" font-family="PingFangSC-Regular, PingFang SC" font-size="18" font-weight="normal" letter-spacing="0.4000001" fill="#35536C">
-                <tspan x="0" y="19">Legend</tspan>
-            </text>
-            <text id="Occupied" font-family="PingFangSC-Light, PingFang SC" font-size="12" font-weight="300" letter-spacing="0.2666668" fill="#35536C">
-                <tspan x="121" y="18">Occupied</tspan>
-            </text>
-            <text id="Vacant" font-family="PingFangSC-Light, PingFang SC" font-size="12" font-weight="300" letter-spacing="0.2666668" fill="#35536C">
-                <tspan x="232" y="18">Vacant</tspan>
-            </text>
-            <rect id="tuli1" stroke="#FF5A5F" fill-opacity="0.200000018" fill="#FF5A5F" x="89.5" y="1.5" width="23" height="23" rx="4"></rect>
-            <rect id="tuli2" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="200.5" y="1.5" width="23" height="23" rx="4"></rect>
-        </g>
         <g id="桌子" transform="translate(352.000000, 128.000000)">
             <rect id="desk" stroke="#F39C9C" fill="#FFD6D6" x="366.5" y="0.5" width="11" height="23"></rect>
-            <rect id="desk5" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" x="366.5" y="25.5" width="11" height="23"></rect>
+            <rect id="desk5" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" transform="translate(378.000000, 43.000000) rotate(90.000000) translate(-378.000000, -43.000000) " x="372.5" y="31.5" width="11" height="23"></rect>
             <rect id="desk1" stroke="#F39C9C" fill="#FFD6D6" x="397.5" y="0.5" width="11" height="23"></rect>
             <rect id="desk-3" stroke="#F39C9C" fill="#FFD6D6" x="397.5" y="25.5" width="11" height="23"></rect>
             <rect id="desk-2" stroke="#F39C9C" fill="#FFD6D6" x="411.5" y="0.5" width="11" height="23"></rect>
             <rect id="desk-6" stroke="#F39C9C" fill="#FFD6D6" x="436.5" y="0.5" width="11" height="23"></rect>
             <rect id="desk-8" stroke="#F39C9C" fill="#FFD6D6" x="459.5" y="25.5" width="11" height="23"></rect>
-            <rect id="desk9" stroke="#F39C9C" fill="#FFD6D6" transform="translate(443.000000, 73.000000) rotate(90.000000) translate(-443.000000, -73.000000) " x="437.5" y="61.5" width="11" height="23"></rect>
+            <rect id="desk9" stroke="#F39C9C" fill="#FFD6D6" transform="translate(459.000000, 73.000000) rotate(90.000000) translate(-459.000000, -73.000000) " x="453.5" y="61.5" width="11" height="23"></rect>
             <rect id="desk4" stroke="#F39C9C" fill="#FFD6D6" x="411.5" y="25.5" width="11" height="23"></rect>
             <rect id="desk7" stroke="#F39C9C" fill="#FFD6D6" x="436.5" y="25.5" width="11" height="23"></rect>
             <rect id="desk16" stroke="#F39C9C" fill="#FFD6D6" x="439.5" y="166.5" width="11" height="23"></rect>
@@ -164,9 +164,7 @@
             <rect id="desk56" stroke="#F39C9C" fill="#FFD6D6" x="539.5" y="269.5" width="11" height="23"></rect>
             <rect id="desk57" stroke="#F39C9C" fill="#FFD6D6" x="553.5" y="269.5" width="11" height="23"></rect>
             <rect id="desk58" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" transform="translate(38.000000, 416.000000) rotate(90.000000) translate(-38.000000, -416.000000) " x="32.5" y="404.5" width="11" height="23"></rect>
-            <rect id="desk59" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" transform="translate(551.000000, 73.000000) rotate(90.000000) translate(-551.000000, -73.000000) " x="545.5" y="61.5" width="11" height="23"></rect>
             <rect id="desk60" stroke="#F39C9C" fill="#FFD6D6" transform="translate(12.000000, 416.000000) rotate(90.000000) translate(-12.000000, -416.000000) " x="6.5" y="404.5" width="11" height="23"></rect>
-            <rect id="desk61" stroke="#F39C9C" fill="#FFD6D6" transform="translate(525.000000, 73.000000) rotate(90.000000) translate(-525.000000, -73.000000) " x="519.5" y="61.5" width="11" height="23"></rect>
             <rect id="desk62" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" transform="translate(578.000000, 185.000000) rotate(90.000000) translate(-578.000000, -185.000000) " x="572.5" y="173.5" width="11" height="23"></rect>
             <rect id="desk63" stroke="#F39C9C" fill="#FFD6D6" transform="translate(578.000000, 171.000000) rotate(90.000000) translate(-578.000000, -171.000000) " x="572.5" y="159.5" width="11" height="23"></rect>
             <rect id="desk64" stroke="#F39C9C" fill="#FFD6D6" transform="translate(552.000000, 185.000000) rotate(90.000000) translate(-552.000000, -185.000000) " x="546.5" y="173.5" width="11" height="23"></rect>
@@ -177,7 +175,7 @@
             <rect id="desk69" stroke="#F39C9C" fill="#FFD6D6" transform="translate(578.000000, 130.000000) rotate(90.000000) translate(-578.000000, -130.000000) " x="572.5" y="118.5" width="11" height="23"></rect>
             <rect id="desk70" stroke="#F39C9C" fill="#FFD6D6" transform="translate(552.000000, 116.000000) rotate(90.000000) translate(-552.000000, -116.000000) " x="546.5" y="104.5" width="11" height="23"></rect>
             <rect id="desk71" stroke="#F39C9C" fill="#FFD6D6" transform="translate(552.000000, 130.000000) rotate(90.000000) translate(-552.000000, -130.000000) " x="546.5" y="118.5" width="11" height="23"></rect>
-            <rect id="desk71" stroke="#F39C9C" fill="#FFD6D6" transform="translate(526.000000, 116.000000) rotate(90.000000) translate(-526.000000, -116.000000) " x="520.5" y="104.5" width="11" height="23"></rect>
+            <rect id="desk79" stroke="#F39C9C" fill="#FFD6D6" transform="translate(526.000000, 116.000000) rotate(90.000000) translate(-526.000000, -116.000000) " x="520.5" y="104.5" width="11" height="23"></rect>
             <rect id="desk72" stroke="#F39C9C" fill="#FFD6D6" transform="translate(526.000000, 130.000000) rotate(90.000000) translate(-526.000000, -130.000000) " x="520.5" y="118.5" width="11" height="23"></rect>
             <rect id="desk73" stroke="#00A699" fill-opacity="0.200000018" fill="#00A699" transform="translate(369.000000, 100.000000) rotate(90.000000) translate(-369.000000, -100.000000) " x="363.5" y="88.5" width="11" height="23"></rect>
             <rect id="desk74" stroke="#F39C9C" fill="#FFD6D6" transform="translate(369.000000, 114.000000) rotate(90.000000) translate(-369.000000, -114.000000) " x="363.5" y="102.5" width="11" height="23"></rect>
@@ -186,27 +184,27 @@
             <rect id="desk77" stroke="#F39C9C" fill="#FFD6D6" transform="translate(317.000000, 100.000000) rotate(90.000000) translate(-317.000000, -100.000000) " x="311.5" y="88.5" width="11" height="23"></rect>
             <rect id="desk78" stroke="#F39C9C" fill="#FFD6D6" transform="translate(317.000000, 114.000000) rotate(90.000000) translate(-317.000000, -114.000000) " x="311.5" y="102.5" width="11" height="23"></rect>
         </g>
-        <g id="文字" transform="translate(162.000000, 207.000000)" fill="#929AA1" font-family="PingFangSC-Regular, PingFang SC" font-size="10" font-weight="normal" letter-spacing="0.2222223">
+        <g id="文字" transform="translate(162.000000, 307.000000)" fill="#929AA1" font-family="PingFang-SC-Regular, PingFang SC" font-size="10" font-weight="normal" letter-spacing="0.2222223">
             <text id="Booth">
-                <tspan x="0" y="111">Booth</tspan>
+                <tspan x="0" y="11">Booth</tspan>
             </text>
             <text id="Booth">
-                <tspan x="67" y="259">Booth</tspan>
+                <tspan x="67" y="159">Booth</tspan>
             </text>
             <text id="Booth">
-                <tspan x="67" y="331">Booth</tspan>
+                <tspan x="67" y="231">Booth</tspan>
             </text>
             <text id="Standing-Desk">
-                <tspan x="180" y="324">Standing Desk</tspan>
+                <tspan x="180" y="224">Standing Desk</tspan>
             </text>
             <text id="Standing-Desk-Copy">
-                <tspan x="694" y="11">Standing Desk</tspan>
+                <tspan x="472" y="70">Standing Desk</tspan>
             </text>
             <text id="Phone-Booth">
-                <tspan x="55" y="111">Phone Booth</tspan>
+                <tspan x="55" y="11">Phone Booth</tspan>
             </text>
             <text id="Phone-Booth">
-                <tspan x="301" y="240"> Phone Booth</tspan>
+                <tspan x="301" y="140"> Phone Booth</tspan>
             </text>
         </g>
         <g id="cgq取消分组" transform="translate(156.000000, 288.000000)" fill="#3822E6">
@@ -219,6 +217,10 @@
             <rect id="9am-cgq-1" x="0" y="9" width="4" height="4"></rect>
             <rect id="9am-cgq-1" x="11" y="9" width="4" height="4"></rect>
             <rect id="9am-cgq-1" x="39" y="9" width="4" height="4"></rect>
+            <rect id="9am-cgq-1-copy" x="50" y="152" width="4" height="4"></rect>
+            <rect id="9am-cgq-1-copy-3" x="50" y="163" width="4" height="4"></rect>
+            <rect id="9am-cgq-1-copy-2" x="60" y="152" width="4" height="4"></rect>
+            <rect id="9am-cgq-1-copy-4" x="60" y="163" width="4" height="4"></rect>
             <rect id="9am-cgq-1" x="28" y="9" width="4" height="4"></rect>
             <rect id="9am-cgq-1" x="383" y="147" width="4" height="4"></rect>
             <rect id="9am-cgq-1" x="383" y="165" width="4" height="4"></rect>
