@@ -226,7 +226,7 @@ class BasicLayout extends React.PureComponent {
           onCollapse={this.handleMenuCollapse}
         />
         <Layout>
-          <Header style={{ padding: 0 }}>
+          {/* <Header style={{ padding: 0 }}>
             <GlobalHeader
               logo={logo}
               currentUser={currentUser}
@@ -239,7 +239,7 @@ class BasicLayout extends React.PureComponent {
               onMenuClick={this.handleMenuClick}
               onNoticeVisibleChange={this.handleNoticeVisibleChange}
             />
-          </Header>
+          </Header> */}
           <Content style={{ margin: '24px 24px 0', height: '100%' }}>
             <Switch>
               {redirectData.map(item => (
