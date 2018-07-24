@@ -157,30 +157,30 @@ import { isUrl } from '../utils/utils';
 // ];
 const menuData = [
   {
-    name: 'wework',
+    name: '南京路',
     icon: 'dashboard',
     path: 'wework',
   },
-  {
-    name: 'weworkclick',
-    icon: 'dashboard',
-    path: 'weworkclick',
-  },
-  {
-    name: 'weworkfun',
-    icon: 'check-circle-o',
-    path: 'weworkfun',
-  },
-  {
-    name: 'weworkfunclick',
-    icon: 'check-circle-o',
-    path: 'weworkfunclick',
-  },
-  {
-    name: '分析',
-    icon: 'dashboard',
-    path: 'analysis2',
-  },
+  // {
+  //   name: 'weworkclick',
+  //   icon: 'dashboard',
+  //   path: 'weworkclick',
+  // },
+  // {
+  //   name: '北京坊',
+  //   icon: 'check-circle-o',
+  //   path: 'weworkfun',
+  // },
+  // {
+  //   name: 'weworkfunclick',
+  //   icon: 'check-circle-o',
+  //   path: 'weworkfunclick',
+  // },
+  // {
+  //   name: '分析',
+  //   icon: 'dashboard',
+  //   path: 'analysis2',
+  // },
 ];
 
 function formatter(data, parentPath = '/', parentAuthority) {

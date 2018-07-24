@@ -25,10 +25,10 @@ function checkStatus(response) {
     return response;
   }
   const errortext = codeMessage[response.status] || response.statusText;
-  notification.error({
-    message: `请求错误 ${response.status}: ${response.url}`,
-    description: errortext,
-  });
+  // notification.error({
+  //   message: `请求错误 ${response.status}: ${response.url}`,
+  //   description: errortext,
+  // });
   const error = new Error(errortext);
   error.name = response.status;
   error.response = response;
@@ -79,22 +79,22 @@ export default function request(url, options) {
     .catch(e => {
       const { dispatch } = store;
       const status = e.name;
-      if (status === 401) {
-        dispatch({
-          type: 'login/logout',
-        });
-        return;
-      }
-      if (status === 403) {
-        dispatch(routerRedux.push('/exception/403'));
-        return;
-      }
-      if (status <= 504 && status >= 500) {
-        dispatch(routerRedux.push('/exception/500'));
-        return;
-      }
-      if (status >= 404 && status < 422) {
-        dispatch(routerRedux.push('/exception/404'));
-      }
+      // if (status === 401) {
+      //   dispatch({
+      //     type: 'login/logout',
+      //   });
+      //   return;
+      // }
+      // if (status === 403) {
+      //   dispatch(routerRedux.push('/exception/403'));
+      //   return;
+      // }
+      // if (status <= 504 && status >= 500) {
+      //   dispatch(routerRedux.push('/exception/500'));
+      //   return;
+      // }
+      // if (status >= 404 && status < 422) {
+      //   dispatch(routerRedux.push('/exception/404'));
+      // }
     });
 }

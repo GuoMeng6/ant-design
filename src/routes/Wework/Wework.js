@@ -135,8 +135,6 @@ export default class Wework extends Component {
   }
 
   componentWillUnmount() {
-    console.log('************ Wewrok componentWillUnmount **********');
-
     this.interval && clearInterval(this.interval);
   }
 
@@ -160,10 +158,10 @@ export default class Wework extends Component {
         rect[i].setAttribute('fill', `${fill}`);
         rect[i].setAttribute('fill-opacity', opacity);
         // 为小方块绑定click事件
-        rect[i].onclick = function() {
-          that.updateChart(deskId);
-          window.location.href = `${window.location.origin}/#/analysis2`;
-        };
+        // rect[i].onclick = function() {
+        //   that.updateChart(deskId);
+        //   window.location.href = `${window.location.origin}/west/#/analysis2`;
+        // };
       }
     }
   }
@@ -194,7 +192,6 @@ export default class Wework extends Component {
 
   fetch() {
     const that = this;
-    console.log('******** fetch **********');
     axios({
       methods: 'get',
       url: this.url,
@@ -236,8 +233,8 @@ export default class Wework extends Component {
     return (
       <div className={styles.main}>
         <iframe
-          // src="http://popularize.9-a-m.com/svg/static/nanjing.svg"
-          src={require('./img/nanjingroot.svg')}
+          src="http://popularize.9-a-m.com/svg/static/nanjing.svg"
+          // src={require('./img/nanjingroot.svg')}
           width="1024px"
           height="768px"
           id="alphasvg"

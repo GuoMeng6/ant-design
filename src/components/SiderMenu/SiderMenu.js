@@ -222,6 +222,7 @@ export default class SiderMenu extends PureComponent {
     if (!selectedKeys.length) {
       selectedKeys = [openKeys[openKeys.length - 1]];
     }
+    return null;
     return (
       <Sider
         trigger={null}

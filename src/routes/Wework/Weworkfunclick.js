@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'dva/router';
-import { Modal} from 'antd';
+import { Modal } from 'antd';
 import { Input } from 'antd';
 import axios from 'axios';
 import styles from './Wework.less';
 
-
 const URL = 'https://wework2018apis.azure-api.cn';
 let AUTH_TOKEN = '';
-let number=0;
+let number = 0;
 const params = [
   '26cf02ea-9b1b-4d67-b5f3-bf4b68009bae',
   'f65f483e-4670-471d-877f-a68a8926cdbe',
@@ -50,32 +49,33 @@ const params = [
   '89dd0fcd-acff-4d9f-aa78-e23361d71a3c',
 ];
 export default class Weworkclick extends Component {
-  state = { visible: false, desk:params[number] }
-  htmlId=''
+  state = { visible: false, desk: params[number] };
+
+  htmlId = '';
 
   showModal = () => {
     this.setState({
       visible: true,
     });
-  }
+  };
 
   // onChange(desk){
   //   this.setState({desk:desk.target.value});
   // }
 
-  handleOk = (e) => {
+  handleOk = e => {
     this.putUp();
     this.setState({
       visible: false,
     });
-  }
+  };
 
-  handleCancel = (e) => {
+  handleCancel = e => {
     this.setState({
       visible: false,
     });
-  }
-  
+  };
+
   setToken() {
     axios({
       methods: 'get',
@@ -86,55 +86,77 @@ export default class Weworkclick extends Component {
       }
     });
   }
-  putUp(){
+
+  putUp() {
     axios({
-      methods:'get',
-      url:`${URL}/desk/updateDeskHtmlId?htmlId=${this.htmlId}&deskId=${this.state.desk}`,
-      dataType: "json",
-      data:{
-        htmlId:this.htmlId,
-        deskId:this.state.desk
+      methods: 'get',
+      url: `${URL}/desk/updateDeskHtmlId?htmlId=${this.htmlId}&deskId=${this.state.desk}`,
+      dataType: 'json',
+      data: {
+        htmlId: this.htmlId,
+        deskId: this.state.desk,
       },
-      headers:{
+      headers: {
         Authorization: AUTH_TOKEN,
         'Ocp-Apim-Trace': true,
         'Content-type': 'application/x-www-form-urlencoded',
-      }
-    }).then((response)=>{
+      },
+    }).then(response => {
       number++;
-      this.state.desk=params[number];
-      this.htmlId='';
+      this.state.desk = params[number];
+      this.htmlId = '';
     });
-
   }
+
   componentDidMount() {
     this.setToken();
-    let _this=this;
-    let a = document.getElementById("balphasvgc");
-    a.addEventListener("load",function(){
+    const _this = this;
+    const a = document.getElementById('balphasvgc');
+    a.addEventListener(
+      'load',
+      () => {
         // get the inner DOM of alpha.svg
-        let svgDoc = a.contentDocument;
+        const svgDoc = a.contentDocument;
         // get the inner element by id
-        let delta = svgDoc.getElementsByTagName("rect");
+        const delta = svgDoc.getElementsByTagName('rect');
         // add behaviour
-        for(let i=0;i<delta.length;i++){
-          delta[i].addEventListener("mousedown",function(){
-              if(delta[i].getAttribute('fill')==='#FFD6D6' || delta[i].getAttribute('fill')==='#00A699' || delta[i].getAttribute('fill')==='#F5CECE' || delta[i].getAttribute('fill')==='#CCEDEB'){
-                  delta[i].setAttribute('stroke','#654df6');
-                  delta[i].setAttribute('fill','#654df6');
-                  _this.htmlId=delta[i].getAttribute('id');
-                  _this.showModal();
+        for (let i = 0; i < delta.length; i++) {
+          delta[i].addEventListener(
+            'mousedown',
+            () => {
+              if (
+                delta[i].getAttribute('fill') === '#FFD6D6' ||
+                delta[i].getAttribute('fill') === '#00A699' ||
+                delta[i].getAttribute('fill') === '#F5CECE' ||
+                delta[i].getAttribute('fill') === '#CCEDEB'
+              ) {
+                delta[i].setAttribute('stroke', '#654df6');
+                delta[i].setAttribute('fill', '#654df6');
+                _this.htmlId = delta[i].getAttribute('id');
+                _this.showModal();
               }
-          }, false);
+            },
+            false
+          );
         }
-    }, false);
+      },
+      false
+    );
   }
 
   render() {
     return (
       <div className={styles.main}>
-        <iframe src={require("./img/beijingclick.svg")} width="1024px" height="768px" id="balphasvgc"
-        frameborder="0" marginheight="0" marginwidth="0" scrolling="no"></iframe>
+        <iframe
+          src={require('./img/beijingroot.svg')}
+          width="1024px"
+          height="768px"
+          id="balphasvgc"
+          frameBorder="0"
+          marginHeight="0"
+          marginWidth="0"
+          scrolling="no"
+        />
         <Modal
           title="Basic Modal"
           visible={this.state.visible}
@@ -145,7 +167,7 @@ export default class Weworkclick extends Component {
           {/* <Input placeholder="请输入id" value={this.state.desk}/> */}
           <p>{this.state.desk}</p>
         </Modal>
-       </div>
+      </div>
     );
   }
 }

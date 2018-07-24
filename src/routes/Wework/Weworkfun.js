@@ -97,10 +97,10 @@ export default class Wework extends Component {
         rect[i].setAttribute('fill', `${fill}`);
         rect[i].setAttribute('fill-opacity', opacity);
         // 为小方块绑定click事件
-        rect[i].onclick = function() {
-          that.updateChart(deskId);
-          window.location.href = `${window.location.origin}/#/analysis2`;
-        };
+        // rect[i].onclick = function() {
+        //   that.updateChart(deskId);
+        //   window.location.href = `${window.location.origin}/#/analysis2`;
+        // };
       }
     }
   }
@@ -147,16 +147,16 @@ export default class Wework extends Component {
             let count = 0;
             for (let j = 0; j < all[i].devices.length; j++) {
               if (that.peopleSensor(all[i].devices[j]) === 1) {
-                that.listen(all[i].htmlId, '#FA7676', '#F5CECE', 1,all[i].id);
+                that.listen(all[i].htmlId, '#FA7676', '#F5CECE', 1, all[i].id);
                 break;
               }
               if (that.peopleSensor(all[i].devices[j]) === '0') {
-                that.listen(all[i].htmlId, '#00A699', '#00A699', 0.2,all[i].id);
+                that.listen(all[i].htmlId, '#00A699', '#00A699', 0.2, all[i].id);
               }
               if (that.peopleSensor(all[i].devices[j]) === 2) {
                 count++;
                 if (count === all[i].devices.length) {
-                  that.listen(all[i].htmlId, '#666666', '#cccccc', 1,all[i].id);
+                  that.listen(all[i].htmlId, '#666666', '#cccccc', 1, all[i].id);
                 }
               }
             }
@@ -173,8 +173,8 @@ export default class Wework extends Component {
     return (
       <div className={styles.main}>
         <iframe
-          // src="http://popularize.9-a-m.com/svg/static/nanjing.svg"
-          src={require('./img/beijingroot.svg')}
+          src="http://popularize.9-a-m.com/svg/static/beijing.svg"
+          // src={require('./img/beijing.svg')}
           width="1024px"
           height="768px"
           id="balphasvg"
