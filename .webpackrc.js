@@ -25,5 +25,6 @@ export default {
   },
   disableDynamicImport: true,
   publicPath: '/',
+  // publicPath: 'http://popularize.9-a-m.com/dist/',
   hash: true,
 };

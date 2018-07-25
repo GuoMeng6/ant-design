@@ -173,8 +173,8 @@ export default class Wework extends Component {
     return (
       <div className={styles.main}>
         <iframe
-          src="http://popularize.9-a-m.com/svg/static/beijing.svg"
-          // src={require('./img/beijing.svg')}
+          // src="http://popularize.9-a-m.com/svg/static/beijing.svg"
+          src={require('./img/beijing.svg')}
           width="1024px"
           height="768px"
           id="balphasvg"
