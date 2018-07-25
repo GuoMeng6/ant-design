@@ -173,17 +173,26 @@ export const getRouterData = app => {
     '/App': {
       component: dynamicWrapper(app, [], () => import('../routes/Wework/App')),
     },
+    //客户页面
     '/wework': {
       component: dynamicWrapper(app, [], () => import('../routes/Wework/Wework')),
     },
     '/weworkfun': {
       component: dynamicWrapper(app, [], () => import('../routes/Wework/Weworkfun')),
     },
+    //操作页面
     '/weworkclick': {
       component: dynamicWrapper(app, [], () => import('../routes/Wework/Weworkclick')),
     },
     '/weworkfunclick': {
       component: dynamicWrapper(app, [], () => import('../routes/Wework/Weworkfunclick')),
+    },
+    //查询页面
+    '/weworkQu': {
+      component: dynamicWrapper(app, [], () => import('../routes/Wework/WeworkQu')),
+    },
+    '/weworkfunQu': {
+      component: dynamicWrapper(app, [], () => import('../routes/Wework/WeworkfunQu')),
     },
     '/analysis2': {
       component: dynamicWrapper(app, [], () => import('../routes/Wework/Analysis2')),
