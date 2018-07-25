@@ -27,7 +27,11 @@ const label = {
 const scale = {
   sales: {
     type: 'linear',
-    tickInterval: 200,
+    min: 0, // 定义数值范围的最小值
+    max: 10000, // 定义数值范围的最大值
+    ticks: [0, 1], // 用于指定坐标轴上刻度点的文本信息（label），当用户设置了 ticks 就会按照 ticks 的个数和文本来显示。
+    tickInterval: 1000, // 用于指定坐标轴各个标度点的间距，是原始数据之间的间距差值，tickCount 和 tickInterval 不可以同时声明。
+    tickCount: 2, // 定义坐标轴刻度线的条数，默认为 5
   },
 };
 let AUTH_TOKEN = '';
@@ -162,15 +166,61 @@ export default class Analysis2 extends Component {
         const all = [];
         for (let i = 0; i < response.data.data.length; i++) {
           all.push({ deviceId: response.data.data[i].deviceId, data: [] });
+          // if (i === 1) {
+          //   console.log('============ ', response.data.data[1].historyList);
+          // }
+          let oldSensor = '';
           for (let j = 0; j < response.data.data[i].historyList.length; j++) {
+            const humansensor = Number(response.data.data[i].historyList[j].humansensor);
+            // if (i === 1) {
+            //   console.log('============ ', { humansensor, oldSensor, index: j });
+            // }
+
+            if (oldSensor !== humansensor) {
+              if (humansensor === 0) {
+                if (i === 1 && (j === 7 || j === 8 || j === 9)) {
+                  console.log('********* push 1 ******** ', j);
+                }
+
+                all[i].data.push({
+                  x: moment(response.data.data[i].historyList[j].updatedAt).unix() * 1000,
+                  y1: 1,
+                  time: moment
+                    .unix(moment(response.data.data[i].historyList[j].updatedAt).unix())
+                    .format('hh:mm:ss'),
+                  index: j,
+                });
+              } else {
+                all[i].data.push({
+                  x: moment(response.data.data[i].historyList[j].updatedAt).unix() * 1000,
+                  y1: 0,
+                  time: moment
+                    .unix(moment(response.data.data[i].historyList[j].updatedAt).unix())
+                    .format('hh:mm:ss'),
+                  index: j,
+                });
+                if (i === 1 && (j === 7 || j === 8 || j === 9)) {
+                  console.log('********* push 1 ******** ', j);
+                }
+              }
+            }
+            oldSensor = humansensor;
+            if (i === 1 && (j === 7 || j === 8 || j === 9)) {
+              console.log('======== push 1 ======== ', j);
+            }
             all[i].data.push({
-              month: moment
+              x: moment(response.data.data[i].historyList[j].updatedAt).unix() * 1000,
+              y1: humansensor,
+              time: moment
                 .unix(moment(response.data.data[i].historyList[j].updatedAt).unix())
-                .format('MM/DD hh:mm:ss'),
-              value: Number(response.data.data[i].historyList[j].humansensor),
+                .format('hh:mm:ss'),
+              index: j,
+              add: 'no',
             });
           }
         }
+        console.log('======== all =========', all);
+
         this.setState({
           chartData: all,
         });
@@ -228,33 +278,33 @@ export default class Analysis2 extends Component {
         />
         <br />
         <br />
-        {chartData.map(item => {
+        {chartData.map((item, index) => {
           return (
-            <div style={{ paddingBottom: 30 }}>
+            <div style={{ paddingBottom: 30 }} key={`charaData${index}`}>
               <font>传感器id：{item.deviceId}</font>
-              {/* <Card
-                  loading={loading}
-                  className={styles.offlineCard}
-                  bordered={false}
-                  bodyStyle={{ padding: '0 0 32px 0' }}
-                  style={{ marginTop: 10 }}
-                >
-                  {chartData.length === 0 ? null : (
-                    <TimelineChart
-                      height={200}
-                      data={item.data}
-                      titleMap={{
-                        y1: '传感器感应状态'
-                      }}
-                    />
-                  )}
-                </Card> */}
-              <Chart scale={scale} height={350} data={item.data} forceFit>
+              <Card
+                loading={loading}
+                className={styles.offlineCard}
+                bordered={false}
+                bodyStyle={{ padding: '0 0 32px 0' }}
+                style={{ marginTop: 10 }}
+              >
+                {chartData.length === 0 ? null : (
+                  <TimelineChart
+                    height={200}
+                    data={item.data}
+                    titleMap={{
+                      y1: '传感器感应状态',
+                    }}
+                  />
+                )}
+              </Card>
+              {/* <Chart scale={scale} height={350} data={item.data} forceFit>
                 <Axis label={label} name="month" />
                 <Axis name="value" />
                 <Tooltip crosshairs={{ type: 'y' }} />
                 <Geom type="line" position="month*value" size={2} shape="hv" />
-              </Chart>
+              </Chart> */}
             </div>
           );
         })}
