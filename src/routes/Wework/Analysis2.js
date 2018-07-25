@@ -166,60 +166,43 @@ export default class Analysis2 extends Component {
         const all = [];
         for (let i = 0; i < response.data.data.length; i++) {
           all.push({ deviceId: response.data.data[i].deviceId, data: [] });
-          // if (i === 1) {
-          //   console.log('============ ', response.data.data[1].historyList);
-          // }
-          let oldSensor = '';
           for (let j = 0; j < response.data.data[i].historyList.length; j++) {
             const humansensor = Number(response.data.data[i].historyList[j].humansensor);
-            // if (i === 1) {
-            //   console.log('============ ', { humansensor, oldSensor, index: j });
+            const x = moment(response.data.data[i].historyList[j].updatedAt).unix() * 1000;
+            // if (humansensor === 0) {
+            //   if (i === 1 && (j === 7 || j === 8 || j === 9)) {
+            //     console.log('********* push 0 ******** ', j, ' == time == ', new Date() * 1);
+            //   }
+            //   all[i].data.push({
+            //     x,
+            //     y1: 1,
+            //     index: j,
+            //     date: new Date() * 1,
+            //   });
+            // } else {
+            //   all[i].data.push({
+            //     x,
+            //     y1: 0,
+            //     index: j,
+            //     date: new Date() * 1,
+            //   });
+            //   if (i === 1 && (j === 7 || j === 8 || j === 9)) {
+            //     console.log('********* push 1 ******** ', j, ' == time == ', new Date() * 1);
+            //   }
             // }
-
-            if (oldSensor !== humansensor) {
-              if (humansensor === 0) {
-                if (i === 1 && (j === 7 || j === 8 || j === 9)) {
-                  console.log('********* push 1 ******** ', j);
-                }
-
-                all[i].data.push({
-                  x: moment(response.data.data[i].historyList[j].updatedAt).unix() * 1000,
-                  y1: 1,
-                  time: moment
-                    .unix(moment(response.data.data[i].historyList[j].updatedAt).unix())
-                    .format('hh:mm:ss'),
-                  index: j,
-                });
-              } else {
-                all[i].data.push({
-                  x: moment(response.data.data[i].historyList[j].updatedAt).unix() * 1000,
-                  y1: 0,
-                  time: moment
-                    .unix(moment(response.data.data[i].historyList[j].updatedAt).unix())
-                    .format('hh:mm:ss'),
-                  index: j,
-                });
-                if (i === 1 && (j === 7 || j === 8 || j === 9)) {
-                  console.log('********* push 1 ******** ', j);
-                }
-              }
-            }
-            oldSensor = humansensor;
-            if (i === 1 && (j === 7 || j === 8 || j === 9)) {
-              console.log('======== push 1 ======== ', j);
-            }
+            // if (i === 1 && (j === 7 || j === 8 || j === 9)) {
+            //   console.log('======== push ======== ', j, ' == time == ', new Date() * 1);
+            // }
             all[i].data.push({
-              x: moment(response.data.data[i].historyList[j].updatedAt).unix() * 1000,
+              x,
               y1: humansensor,
-              time: moment
-                .unix(moment(response.data.data[i].historyList[j].updatedAt).unix())
-                .format('hh:mm:ss'),
               index: j,
-              add: 'no',
+              a: '=',
+              date: new Date() * 1,
             });
           }
         }
-        console.log('======== all =========', all);
+        console.log('======== all =========', all[1]);
 
         this.setState({
           chartData: all,
