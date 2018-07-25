@@ -99,7 +99,7 @@ export default class WeworkfunQu extends Component {
         // 为小方块绑定click事件
         rect[i].onclick = function() {
           that.updateChart(deskId);
-          window.location.href = `${window.location.origin}/#/analysis2`;
+          window.location.href = `${window.location.origin}/west/#/analysis2`;
         };
       }
     }
