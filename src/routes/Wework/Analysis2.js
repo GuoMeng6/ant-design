@@ -5,13 +5,14 @@ import moment from 'moment';
 import { TimelineChart } from 'components/Charts';
 import Trend from 'components/Trend';
 import NumberInfo from 'components/NumberInfo';
-import { getTimeDistance } from '../../utils/utils';
 import axios from 'axios';
 import { Chart, Axis, Tooltip, Geom } from 'bizcharts';
+import { getTimeDistance } from '../../utils/utils';
 
 import styles from './Analysis2.less';
+
 const URL = 'https://wework2018apis.azure-api.cn';
-const label={
+const label = {
   offset: 10,
   textStyle: {
     textAlign: 'center',
@@ -24,9 +25,9 @@ const label={
   autoRotate: true,
 };
 const scale = {
-  sales:{
-    type:"linear",
-    tickInterval:200,
+  sales: {
+    type: 'linear',
+    tickInterval: 200,
   },
 };
 let AUTH_TOKEN = '';
@@ -46,7 +47,7 @@ export default class Analysis2 extends Component {
     currentTabKey: '',
     rangePickerValue: getTimeDistance('year'),
     input: '',
-    chartData: []
+    chartData: [],
   };
 
   componentDidMount() {
@@ -110,7 +111,8 @@ export default class Analysis2 extends Component {
       return styles.currentDate;
     }
   }
-  //获取token
+
+  // 获取token
   setToken() {
     axios({
       methods: 'get',
@@ -121,64 +123,78 @@ export default class Analysis2 extends Component {
       }
     });
   }
-  //时间改变的事件
+
+  // 时间改变的事件
   onChange(dates, dateStrings) {
     console.log('From: ', dates[0], ', to: ', dates[1]);
     this.from = dates[0];
     this.to = dates[1];
     // console.log('From: ', dateStrings[0], ', to: ', dateStrings[1]);
   }
-  //时间组件点击确定时触发的函数
+
+  // 时间组件点击确定时触发的函数
   onOk() {
     console.log('========= OK =========', 'From: ', this.from, ', to: ', this.to);
   }
-  //搜索触发的事件
+
+  // 搜索触发的事件
   handleSearch(e) {
-    if(this.state.input===''){
+    if (this.state.input === '') {
       alert('请输入deskId');
-      return
+      return;
     }
-    let url=`${URL}/data/statusList?deskId=${this.state.input}`;
-    if(this.from){
-      url= `${URL}/data/statusList?deskId=${this.state.input}&startTime=${this.from}&endTime=${this.to}`
+    let url = `${URL}/data/statusList?deskId=${this.state.input}`;
+    if (this.from) {
+      url = `${URL}/data/statusList?deskId=${this.state.input}&startTime=${this.from}&endTime=${
+        this.to
+      }`;
     }
     axios({
       methods: 'get',
-      url: url,
+      url,
       headers: {
         Authorization: AUTH_TOKEN,
         'Ocp-Apim-Trace': true,
         'Content-type': 'application/x-www-form-urlencoded',
       },
-    }).then(response => {
-      let all=[];
-      for(let i=0;i<response.data.data.length;i++){
-        all.push({'deviceId':response.data.data[i].deviceId,'data':[]});
-        for(let j=0;j<response.data.data[i].historyList.length;j++){
-          all[i].data.push({'month':this.obTime(moment(response.data.data[i].historyList[j].updatedAt).unix() * 1000),'value':Number(response.data.data[i].historyList[j].humansensor)});
+    })
+      .then(response => {
+        const all = [];
+        for (let i = 0; i < response.data.data.length; i++) {
+          all.push({ deviceId: response.data.data[i].deviceId, data: [] });
+          for (let j = 0; j < response.data.data[i].historyList.length; j++) {
+            all[i].data.push({
+              month: moment
+                .unix(moment(response.data.data[i].historyList[j].updatedAt).unix())
+                .format('MM/DD hh:mm:ss'),
+              value: Number(response.data.data[i].historyList[j].humansensor),
+            });
+          }
         }
-      }
-      this.setState({
-        chartData: all,
+        this.setState({
+          chartData: all,
+        });
+      })
+      .catch((err, err2) => {
+        this.setToken();
       });
-    }).catch((err, err2) => {
-      this.setToken();
-    });
   }
-  //改变输入框的值
+
+  // 改变输入框的值
   handleInputChange(e) {
     this.setState({
       input: e.target.value,
     });
   }
-  //自定义时间
-  obTime(time){
-    let date = new Date(time);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
-    let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
-    let D = date.getDate() < 10 ? '0' + date.getDate() + ' ' : date.getDate() + ' ';
-    let h = ' ' + date.getHours() < 10 ? '0' + date.getHours() + ':' : date.getHours() + ':';
-    let m = date.getMinutes() < 10 ? '0' + date.getMinutes() + ':' : date.getMinutes() + ':';
-    let s = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
+
+  // 自定义时间
+  obTime(time) {
+    const date = new Date(time); // 时间戳为10位需*1000，时间戳为13位的话不需乘1000
+    const M = `${date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1}-`;
+    const D = date.getDate() < 10 ? `0${date.getDate()} ` : `${date.getDate()} `;
+    const h = ` ${date.getHours()}` < 10 ? `0${date.getHours()}:` : `${date.getHours()}:`;
+    const m = date.getMinutes() < 10 ? `0${date.getMinutes()}:` : `${date.getMinutes()}:`;
+    const s = date.getSeconds() < 10 ? `0${date.getSeconds()}` : date.getSeconds();
     return M + D + h + m + s;
   }
 
@@ -212,12 +228,11 @@ export default class Analysis2 extends Component {
         />
         <br />
         <br />
-        {
-          chartData.map((item)=>{
-            return (
-              <div style={{paddingBottom:30}}>
-                <font>传感器id：{item.deviceId}</font>
-                {/* <Card
+        {chartData.map(item => {
+          return (
+            <div style={{ paddingBottom: 30 }}>
+              <font>传感器id：{item.deviceId}</font>
+              {/* <Card
                   loading={loading}
                   className={styles.offlineCard}
                   bordered={false}
@@ -234,17 +249,15 @@ export default class Analysis2 extends Component {
                     />
                   )}
                 </Card> */}
-                <Chart scale={scale} height={350} data={item.data} forceFit>
-                  <Axis label={label} name="month" />
-                  <Axis name="value" />
-                  <Tooltip crosshairs={{type : "y"}}/>
-                  <Geom type="line" position="month*value" size={2} shape={'hv'} />
-                </Chart>
-              </div>
-            )
-          })
-        }
-        
+              <Chart scale={scale} height={350} data={item.data} forceFit>
+                <Axis label={label} name="month" />
+                <Axis name="value" />
+                <Tooltip crosshairs={{ type: 'y' }} />
+                <Geom type="line" position="month*value" size={2} shape="hv" />
+              </Chart>
+            </div>
+          );
+        })}
       </Fragment>
     );
   }
