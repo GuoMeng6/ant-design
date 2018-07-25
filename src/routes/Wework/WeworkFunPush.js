@@ -50,7 +50,7 @@ const params = [
 ];
 
 @connect(() => ({}))
-export default class WeworkfunQu extends Component {
+export default class WeworkFunPush extends Component {
   constructor(props) {
     super(props);
     const defaultData = [];
@@ -89,7 +89,9 @@ export default class WeworkfunQu extends Component {
 
   listen(id, stroke, fill, opacity, deskId) {
     const that = this;
-    const rect = document.getElementById('balphasvgqu').contentDocument.getElementsByTagName('rect');
+    const rect = document
+      .getElementById('balphasvgqu')
+      .contentDocument.getElementsByTagName('rect');
     for (let i = 0; i < rect.length; i++) {
       if (rect[i].getAttribute('id') == id) {
         // 循环改变颜色

@@ -106,7 +106,7 @@ const params = [
 ];
 
 @connect(() => ({}))
-export default class WeworkQu extends Component {
+export default class WeworkPush extends Component {
   constructor(props) {
     super(props);
     const defaultData = [];
@@ -233,8 +233,8 @@ export default class WeworkQu extends Component {
     return (
       <div className={styles.main}>
         <iframe
-          // src="http://popularize.9-a-m.com/svg/static/nanjing.svg"
-          src={require('./img/nanjingroot.svg')}
+          src="http://popularize.9-a-m.com/svg/static/nanjing.svg"
+          // src={require('./img/nanjingroot.svg')}
           width="1024px"
           height="768px"
           id="alphasvgqu"
