@@ -7,9 +7,28 @@ import Trend from 'components/Trend';
 import NumberInfo from 'components/NumberInfo';
 import { getTimeDistance } from '../../utils/utils';
 import axios from 'axios';
+import { Chart, Axis, Tooltip, Geom } from 'bizcharts';
 
 import styles from './Analysis2.less';
 const URL = 'https://wework2018apis.azure-api.cn';
+const label={
+  offset: 10,
+  textStyle: {
+    textAlign: 'center',
+    fill: '#404040',
+    fontSize: '12',
+    fontWeight: 'bold',
+    rotate: 70,
+    textBaseline: 'top',
+  },
+  autoRotate: true,
+};
+const scale = {
+  sales:{
+    type:"linear",
+    tickInterval:200,
+  },
+};
 let AUTH_TOKEN = '';
 const { TabPane } = Tabs;
 const { RangePicker } = DatePicker;
@@ -27,14 +46,7 @@ export default class Analysis2 extends Component {
     currentTabKey: '',
     rangePickerValue: getTimeDistance('year'),
     input: '',
-    chartData: [
-      {
-        'deviceId':'290d7e585f0e426aa644be764846e02b',
-        'data':[
-          {'x': 1532395830000, 'y1': 1},{'x': 1532395848000, 'y1': 0},{'x': 1532395859000, 'y1': 1}
-        ]
-      }
-    ]
+    chartData: []
   };
 
   componentDidMount() {
@@ -143,7 +155,7 @@ export default class Analysis2 extends Component {
       for(let i=0;i<response.data.data.length;i++){
         all.push({'deviceId':response.data.data[i].deviceId,'data':[]});
         for(let j=0;j<response.data.data[i].historyList.length;j++){
-          all[i].data.push({'x':moment(response.data.data[i].historyList[j].updatedAt).unix() * 1000,'y1':Number(response.data.data[i].historyList[j].humansensor)});
+          all[i].data.push({'month':this.obTime(moment(response.data.data[i].historyList[j].updatedAt).unix() * 1000),'value':Number(response.data.data[i].historyList[j].humansensor)});
         }
       }
       this.setState({
@@ -158,6 +170,16 @@ export default class Analysis2 extends Component {
     this.setState({
       input: e.target.value,
     });
+  }
+  //自定义时间
+  obTime(time){
+    let date = new Date(time);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+    let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+    let D = date.getDate() < 10 ? '0' + date.getDate() + ' ' : date.getDate() + ' ';
+    let h = ' ' + date.getHours() < 10 ? '0' + date.getHours() + ':' : date.getHours() + ':';
+    let m = date.getMinutes() < 10 ? '0' + date.getMinutes() + ':' : date.getMinutes() + ':';
+    let s = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
+    return M + D + h + m + s;
   }
 
   render() {
@@ -193,9 +215,9 @@ export default class Analysis2 extends Component {
         {
           chartData.map((item)=>{
             return (
-              <div>
-                <font>传感器id</font>
-                <Card
+              <div style={{paddingBottom:30}}>
+                <font>传感器id：{item.deviceId}</font>
+                {/* <Card
                   loading={loading}
                   className={styles.offlineCard}
                   bordered={false}
@@ -211,7 +233,13 @@ export default class Analysis2 extends Component {
                       }}
                     />
                   )}
-                </Card>
+                </Card> */}
+                <Chart scale={scale} height={350} data={item.data} forceFit>
+                  <Axis label={label} name="month" />
+                  <Axis name="value" />
+                  <Tooltip crosshairs={{type : "y"}}/>
+                  <Geom type="line" position="month*value" size={2} shape={'hv'} />
+                </Chart>
               </div>
             )
           })
