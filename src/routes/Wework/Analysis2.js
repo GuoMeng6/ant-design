@@ -166,44 +166,37 @@ export default class Analysis2 extends Component {
         const all = [];
         for (let i = 0; i < response.data.data.length; i++) {
           all.push({ deviceId: response.data.data[i].deviceId, data: [] });
+          let oldHumanSensor = '';
           for (let j = 0; j < response.data.data[i].historyList.length; j++) {
             const humansensor = Number(response.data.data[i].historyList[j].humansensor);
             const x = moment(response.data.data[i].historyList[j].updatedAt).unix() * 1000;
-            // if (humansensor === 0) {
-            //   if (i === 1 && (j === 7 || j === 8 || j === 9)) {
-            //     console.log('********* push 0 ******** ', j, ' == time == ', new Date() * 1);
-            //   }
-            //   all[i].data.push({
-            //     x,
-            //     y1: 1,
-            //     index: j,
-            //     date: new Date() * 1,
-            //   });
-            // } else {
-            //   all[i].data.push({
-            //     x,
-            //     y1: 0,
-            //     index: j,
-            //     date: new Date() * 1,
-            //   });
-            //   if (i === 1 && (j === 7 || j === 8 || j === 9)) {
-            //     console.log('********* push 1 ******** ', j, ' == time == ', new Date() * 1);
-            //   }
-            // }
-            // if (i === 1 && (j === 7 || j === 8 || j === 9)) {
-            //   console.log('======== push ======== ', j, ' == time == ', new Date() * 1);
-            // }
-            all[i].data.push({
-              x,
-              y1: humansensor,
-              index: j,
-              a: '=',
-              date: new Date() * 1,
-            });
+            if (oldHumanSensor !== humansensor) {
+              if (humansensor === 0) {
+                all[i].data.push({
+                  x: x - 1,
+                  y1: 1,
+                  index: j,
+                  time: moment.unix(x / 1000).format('hh:mm'),
+                });
+              } else {
+                all[i].data.push({
+                  x: x - 1,
+                  y1: 0,
+                  index: j,
+                  time: moment.unix(x / 1000).format('hh:mm'),
+                });
+              }
+              all[i].data.push({
+                x,
+                y1: humansensor,
+                index: j,
+                a: '=',
+                time: moment.unix(x / 1000).format('hh:mm'),
+              });
+            }
+            oldHumanSensor = humansensor;
           }
         }
-        console.log('======== all =========', all[1]);
-
         this.setState({
           chartData: all,
         });
@@ -235,7 +228,6 @@ export default class Analysis2 extends Component {
     const { currentTabKey, chartData, input } = this.state;
     const { chart, loading } = this.props;
     // const { offlineData, offlineChartData } = chart;
-    // console.log('============ render ========== ', { offlineData, offlineChartData });
     // const activeKey = currentTabKey || (offlineData[0] && offlineData[0].name);
 
     return (
