@@ -24,7 +24,7 @@ export default {
     javascriptEnabled: true,
   },
   disableDynamicImport: true,
-  // publicPath: '/',
-  publicPath: 'http://popularize.9-a-m.com/west/',
+  publicPath: '/',
+  // publicPath: 'http://popularize.9-a-m.com/west/',
   hash: true,
 };
