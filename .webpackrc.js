@@ -23,7 +23,7 @@ export default {
   lessLoaderOptions: {
     javascriptEnabled: true,
   },
-  disableDynamicImport: true,
+  disableDynamicImport: false,
   // publicPath: '/',
   publicPath: 'http://popularize.9-a-m.com/west/',
   hash: true,
