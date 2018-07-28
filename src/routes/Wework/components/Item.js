@@ -80,15 +80,30 @@ const styles = {
 };
 
 class Item extends Component {
+  //构建类时调用的构造函数
   constructor(props) {
-    super(props);
-    this.state = {
+    super(props);//向父类传递属性
+    this.state = {//定义自己的数据
       opacity: 0,
       anim: props.data.active ? new Animated.Value(1) : new Animated.Value(0),
       // anim: props.data.status === '离线' ? new Animated.Value(1) : new Animated.Value(0),
     };
   }
-
+  //在render之前执行一次
+  componentWillMount() { }
+  //======页面渲染
+  // render() {
+  //   const { type, style } = this.props;
+  //   const deskType = this.getStyle(type);
+  //   return (
+  //     <div style={Object.assign({}, deskType, style)}>
+  //       <Animated.div style={Object.assign({}, animStyle, { opacity: this.state.anim })} />
+  //     </div>
+  //   );
+  // }
+  //=======在rander之后立马执行（1次）
+  componentDidMount() { }
+  //=======接收到新的属性时
   componentWillReceiveProps(nextProps) {
     if (nextProps.data.active && !this.props.data.active) {
       this.startAnim();
@@ -97,7 +112,15 @@ class Item extends Component {
       this.endAnim();
     }
   }
-
+  //是否需要更新
+  shouldComponentUpdate(nextProps, nextState) { }
+  //即将更新（准备工作）=》render
+  componentWillUpdate() { }
+  //render=》更新完成
+  componentDidUpdate() { }
+  //======销毁
+  componentWillUnmount() { }
+  //页面定义函数
   startAnim() {
     Animated.timing(this.state.anim, { toValue: 1, duration: 300 }).start();
   }
@@ -110,7 +133,7 @@ class Item extends Component {
     const arr = type.split(' ');
     return styles[arr[0]][arr[1]];
   }
-
+  //======页面渲染
   render() {
     const { type, style } = this.props;
     const deskType = this.getStyle(type);
@@ -120,6 +143,7 @@ class Item extends Component {
       </div>
     );
   }
+
 }
 
 export default Item;
