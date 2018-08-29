@@ -181,7 +181,7 @@ export const getRouterData = app => {
       component: dynamicWrapper(app, [], () => import('../routes/Wework/WeworkFunPush')),
     },
     '/analysis2': {
-      component: dynamicWrapper(app, [], () => import('../routes/Wework/Analysis2')),
+      component: dynamicWrapper(app, ['chart'], () => import('../routes/Wework/Analysis2')),
     },
     // 客户页面
     '/wework': {
@@ -197,7 +197,9 @@ export const getRouterData = app => {
     '/weworkfunclick': {
       component: dynamicWrapper(app, [], () => import('../routes/Wework/Weworkfunclick')),
     },
-
+    '/furniture': {
+      component: dynamicWrapper(app, [], () => import('../routes/Furniture/index')),
+    },
     // '/user/:id': {
     //   component: dynamicWrapper(app, [], () => import('../routes/User/SomeComponent')),
     // },
