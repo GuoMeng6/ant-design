@@ -206,7 +206,9 @@ export const getRouterData = app => {
     '/tianchuang': {
       component: dynamicWrapper(app, [], () => import('../routes/TianChuang/TianChuang')),
     },
-    
+    '/microsoft': {
+      component: dynamicWrapper(app, [], () => import('../routes/Microsoft/Microsoft')),
+    },
     // '/user/:id': {
     //   component: dynamicWrapper(app, [], () => import('../routes/User/SomeComponent')),
     // },
