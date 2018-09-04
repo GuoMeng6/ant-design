@@ -25,6 +25,7 @@
     "@babel/polyfill": "^7.0.0-beta.36",
     "animated": "^0.2.2",
     "antd": "3.6.4",
+    "aphrodite": "^2.2.3",
     "axios": "^0.18.0",
     "bizcharts": "^3.1.10",
     "bizcharts-plugin-slider": "^2.0.1",

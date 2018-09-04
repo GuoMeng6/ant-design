@@ -200,6 +200,9 @@ export const getRouterData = app => {
     '/furniture': {
       component: dynamicWrapper(app, [], () => import('../routes/Furniture/index')),
     },
+    '/urwork': {
+      component: dynamicWrapper(app, [], () => import('../routes/Urwork/Urwork')),
+    },
     // '/user/:id': {
     //   component: dynamicWrapper(app, [], () => import('../routes/User/SomeComponent')),
     // },

@@ -38,7 +38,14 @@ const styles = {
     lineHeight: '26px',
     marginLeft: 8,
   },
-
+  peskView3: {
+    width: 24,
+    height: 24,
+    backgroundColor: '#DCDCDC',
+    border: '1px solid #808080',
+    borderRadius: 4,
+    marginLeft: 30,
+  },
 };
 
 class Key extends Component {
@@ -50,6 +57,8 @@ class Key extends Component {
         <font style={styles.activeText}>Occupied</font>
         <div style={styles.peskView} />
         <font style={styles.activeText2}>Vacant</font>
+        <div style={styles.peskView3} />
+        <font style={styles.activeText2}>Offline</font>
       </div>
     );
   }

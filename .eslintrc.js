@@ -14,7 +14,7 @@ module.exports = {
     'consistent-return': [0],
     'react/forbid-prop-types': [0],
     'react/jsx-filename-extension': [1, { extensions: ['.js'] }],
-    "class-methods-use-this": ["error", { "exceptMethods": ["getUrl","setToken"] }],
+    "class-methods-use-this": [0],
     'global-require': [1],
     'import/prefer-default-export': [0],
     'react/jsx-no-bind': [0],

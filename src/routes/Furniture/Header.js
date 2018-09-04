@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Key from './Key';
+import Key from '../../components/sensor/Key';
 
 const styles = {
   container: {

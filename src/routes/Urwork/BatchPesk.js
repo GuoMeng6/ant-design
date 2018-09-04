@@ -1,56 +1,26 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Item from '../../components/sensor/Item';
+import { StyleSheet, css } from 'aphrodite';
 
-const styles = {
-  container: {
-    flex: 1,
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  center: {
-    width: 'auto',
-    height: 300,
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  left: {
-    height: 300,
-    width: 280,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  right: {
-    marginLeft: 100,
-    height: 300,
-    width: 280,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  text: {
-    fontSize: 20,
-    color: '#325471',
-    fontWeight:500,
-  },
-}
+import Item from '../../components/sensor/Item';
 
 const URL = 'http://iotbaseapi-9am.azure-api.cn';
 let AUTH_TOKEN = '';
-const params = [
-  'f7b735d3-56da-4dc4-8307-6dd7144d56af', // 42
-  '2b85f2fc-9d0a-48e7-a482-cdbd50ebe0b2', // 43
-  '0fe0a532-0ca0-46d0-8b22-dc264b2defa9', // 44
-]
-
-class Pesk extends Component {
+const itemStyle = {
+  itemView1: {
+    width: 90,
+    height: 60,
+    marginLeft: 10,
+  },
+  itemView2: {
+    width: 90,
+    height: 60,
+  },
+}
+class BatchPesk extends Component {
   constructor(props) {
     super(props);
+    const { params } = props;
     this.defaultData = [];
     for (let i = 0; i < params.length; i+=1) {
       this.defaultData.push({ active: false, value: i + 1, status:'offline' });
@@ -65,12 +35,8 @@ class Pesk extends Component {
     this.setToken();
     this.interval = setInterval(() => {
       this.fetch();
-    }, 2000);
+    }, 3000);
   }
-
-  // componentWillUnmount() {
-  //   this.interval && clearInterval(this.interval);
-  // }
 
   setToken() {
     axios({
@@ -88,9 +54,12 @@ class Pesk extends Component {
   }
 
   getUrl() {
+    const { params } = this.props
     let url = `${URL}/desks/status?`;
     params.forEach((value) => {
-      url = `${url}&deskId=${value}`;
+      if (value) {
+        url = `${url}&deskId=${value}`;
+      }
     });
     return url;
   }
@@ -100,6 +69,7 @@ class Pesk extends Component {
   }
 
   fetch() {
+    const { params } = this.props;
     const that = this;
     axios({
       method: 'get',
@@ -107,7 +77,9 @@ class Pesk extends Component {
       headers: {
         Authorization: `Bearer ${AUTH_TOKEN}`,
         'Ocp-Apim-Trace': true,
-        'Content-type': 'application/x-www-form-urlencoded',
+      },
+      validateStatus (status) {
+        return status >= 200 && status < 500; 
       },
       timeout: 5000,
     })
@@ -118,7 +90,7 @@ class Pesk extends Component {
           for (let i = 0; i < params.length; i+=1) {
             for (let j = 0; j < resData.length; j+=1) {
               if (params[i] === '') {
-                data.push({ value: '' });
+                data.push({ value: '', active: false, status: 'offline' });
                 break;
               }
               const devices = resData[j].devices[0];
@@ -128,11 +100,12 @@ class Pesk extends Component {
                   active: (devices && devices.deviceTwin && devices.deviceTwin.humansensor) === 1,
                   value: i + 1,
                   status: devices && devices.deviceTwin && devices.deviceTwin.status,
+                  number:devices.number,
                 });
                 break;
               }
               if (j === resData.length - 1 && params[i] !== resData[j].id) {
-                data.push({ value: '?', active: false });
+                data.push({ value: '?', active: false, status: 'offline' });
                 break;
               }
             }
@@ -143,31 +116,51 @@ class Pesk extends Component {
         }
       })
       .catch(() => {
+        this.setState({ list: that.defaultData });
         that.setToken();
       });
   }
 
-
   render() {
     const { list } = this.state;
+    console.log('****** list ******',list);
     return (
-      <div style={styles.container}>
-        <div style={styles.center}>
-          <div style={styles.left}>
-            <Item data={list[0]} style={{marginTop: 65}} />
-            <div style={{flex:1}} />
-            <font style={styles.text}>Pesk</font>
-          </div>
-          <div style={styles.right}>
-            <Item data={list[1]} />
-            <Item data={list[2]} style={{marginTop: 10}} />
-            <div style={{flex:1}} />
-            <font style={styles.text}>Twins</font>
-          </div>
-        </div>
+      <div className={css(styles.container)}>
+        {[0, 1, 2, 3].map((value) => {
+          return (
+            <div className={css(styles.rowView)} key={`batch${value}`}>
+              {list.slice(value * 10, value * 10 + 10).map((item, index) => (
+                <Item
+                  key={`item${index+1}`}
+                  data={item}
+                  showValue
+                  style={index === 0 ? itemStyle.itemView2: itemStyle.itemView1}
+                />
+              ))}
+            </div>
+          );
+        })}
       </div>
     );
   }
 }
 
-export default Pesk;
+const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    height: 'auto',
+    display: 'flex',
+    flexDirection: 'column',
+    padding: 10,
+  },
+  rowView: {
+    width: '100%',
+    height: 'auto',
+    margin: [20, 20, 20, 20],
+    display: 'flex',
+    flexDirection: 'row',
+  },
+ 
+});
+
+export default BatchPesk;
