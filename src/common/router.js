@@ -203,6 +203,10 @@ export const getRouterData = app => {
     '/urwork': {
       component: dynamicWrapper(app, [], () => import('../routes/Urwork/Urwork')),
     },
+    '/tianchuang': {
+      component: dynamicWrapper(app, [], () => import('../routes/TianChuang/TianChuang')),
+    },
+    
     // '/user/:id': {
     //   component: dynamicWrapper(app, [], () => import('../routes/User/SomeComponent')),
     // },
