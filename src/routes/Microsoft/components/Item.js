@@ -12,11 +12,10 @@ const styles = {
     alignItems: 'center',
     textAlign: 'center',
     borderRadius: 8,
-    backgroundColor: '#ccedeb', //浅蓝
+    backgroundColor: '#ccedeb',
     border: '1px solid #00a699',
   },
   peskView2: {
-    position: 'relative',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
@@ -28,7 +27,7 @@ const styles = {
     left: -1,
     right: -1,
     bottom: -1,
-    backgroundColor: '#ffdedf', //浅红
+    backgroundColor: '#ffdedf',
     border: '1px solid #f34146',
   },
   deskView: {
@@ -41,11 +40,10 @@ const styles = {
     alignContent: 'center',
     textAlign: 'center',
     borderRadius: 8,
-    backgroundColor: '#ccedeb', //浅蓝
+    backgroundColor: '#ccedeb', 
     border: '1px solid #00a699',
   },
   deskView2: {
-    position: 'relative',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -57,7 +55,7 @@ const styles = {
     left: -1,
     right: -1,
     bottom: -1,
-    backgroundColor: '#ffdedf', //浅红
+    backgroundColor: '#ffdedf',
     border: '1px solid #f34146',
   },
 };
@@ -66,7 +64,6 @@ class Item extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      opacity: 0,
       anim: props.data.active ? new Animated.Value(1) : new Animated.Value(0),
     };
   }
@@ -89,7 +86,7 @@ class Item extends Component {
   }
 
   render() {
-    const { data, title, type, style, hideValue } = this.props;
+    const { data, title, style } = this.props;
     return (
       <div style={Object.assign({}, styles.peskView, style)}>
         <Animated.div style={Object.assign({}, styles.peskView2, { opacity: this.state.anim })}>

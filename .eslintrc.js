@@ -61,11 +61,15 @@ module.exports = {
     'function-paren-newline': [0],
     'no-restricted-globals': [0],
     'require-yield': [1],
+    'no-unused-expressions': [0]
   },
   parserOptions: {
     ecmaFeatures: {
       experimentalObjectRestSpread: true,
     },
+  },
+  globals: {
+    USE_COMMA: true,
   },
   settings: {
     polyfills: ['fetch', 'promises'],

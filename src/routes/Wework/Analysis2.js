@@ -1,63 +1,36 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'dva';
-import { Card, Tabs, DatePicker, Input } from 'antd';
+import { Card, DatePicker, Input } from 'antd';
 import moment from 'moment';
 import { TimelineChart } from 'components/Charts';
-import Trend from 'components/Trend';
-import NumberInfo from 'components/NumberInfo';
 import axios from 'axios';
-import { Chart, Axis, Tooltip, Geom } from 'bizcharts';
 import { getTimeDistance } from '../../utils/utils';
 
 import styles from './Analysis2.less';
 
-const URL = 'https://wework2018apis.azure-api.cn';
-const label = {
-  offset: 10,
-  textStyle: {
-    textAlign: 'center',
-    fill: '#404040',
-    fontSize: '12',
-    fontWeight: 'bold',
-    rotate: 70,
-    textBaseline: 'top',
-  },
-  autoRotate: true,
-};
-const scale = {
-  sales: {
-    type: 'linear',
-    min: 0, // 定义数值范围的最小值
-    max: 10000, // 定义数值范围的最大值
-    ticks: [0, 1], // 用于指定坐标轴上刻度点的文本信息（label），当用户设置了 ticks 就会按照 ticks 的个数和文本来显示。
-    tickInterval: 1000, // 用于指定坐标轴各个标度点的间距，是原始数据之间的间距差值，tickCount 和 tickInterval 不可以同时声明。
-    tickCount: 2, // 定义坐标轴刻度线的条数，默认为 5
-  },
-};
+const URL = process.weworkApi;
 let AUTH_TOKEN = '';
-const { TabPane } = Tabs;
 const { RangePicker } = DatePicker;
-const Search = Input.Search;
-
-const rankingListData = [];
+const { Search } = Input;
 
 @connect(({ chart, loading }) => ({
   chart,
   loading: loading.effects['chart/fetch'],
 }))
 export default class Analysis2 extends Component {
-  state = {
-    salesType: 'all',
-    currentTabKey: '',
-    rangePickerValue: getTimeDistance('year'),
-    input: '',
-    chartData: [],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      rangePickerValue: getTimeDistance('year'),
+      input: '',
+      chartData: [],
+    }
+    this.from = '';
+  }
 
   componentDidMount() {
-    const { dispatch, chart } = this.props;
+    const { chart } = this.props;
     this.setToken();
-    console.log(' ********* Analysis ******** ', chart);
     this.setState({ input: chart.deskId });
   }
 
@@ -68,23 +41,37 @@ export default class Analysis2 extends Component {
     });
   }
 
-  handleChangeSalesType = e => {
-    this.setState({
-      salesType: e.target.value,
-    });
-  };
+  // 时间改变的事件
+  onChange(dates) {
+    const from = dates[0];
+    const to = dates[1];
+    this.from = from;
+    this.to = to;
+  }
 
-  handleTabChange = key => {
-    this.setState({
-      currentTabKey: key,
+  // 时间组件点击确定时触发的函数
+  onOk() { }
+  
+  // 获取token
+  setToken() {
+    axios({
+      methods: 'get',
+      url: `${URL}/reservation/getSource`,
+    }).then(response => {
+      if (response.status === 200) {
+        AUTH_TOKEN = response.data.data;
+      }
     });
-  };
+  }
+
+  handleChangeSalesType = () => {};
+
+  handleTabChange = () => {};
 
   handleRangePickerChange = rangePickerValue => {
     this.setState({
       rangePickerValue,
     });
-
     const { dispatch } = this.props;
     dispatch({
       type: 'chart/fetchSalesData',
@@ -95,7 +82,6 @@ export default class Analysis2 extends Component {
     this.setState({
       rangePickerValue: getTimeDistance(type),
     });
-
     const { dispatch } = this.props;
     dispatch({
       type: 'chart/fetchSalesData',
@@ -116,40 +102,16 @@ export default class Analysis2 extends Component {
     }
   }
 
-  // 获取token
-  setToken() {
-    axios({
-      methods: 'get',
-      url: `${URL}/reservation/getSource`,
-    }).then(response => {
-      if (response.status === 200) {
-        AUTH_TOKEN = response.data.data;
-      }
-    });
-  }
-
-  // 时间改变的事件
-  onChange(dates, dateStrings) {
-    console.log('From: ', dates[0], ', to: ', dates[1]);
-    this.from = dates[0];
-    this.to = dates[1];
-    // console.log('From: ', dateStrings[0], ', to: ', dateStrings[1]);
-  }
-
-  // 时间组件点击确定时触发的函数
-  onOk() {
-    console.log('========= OK =========', 'From: ', this.from, ', to: ', this.to);
-  }
-
   // 搜索触发的事件
-  handleSearch(e) {
-    if (this.state.input === '') {
+  handleSearch() {
+    const { input } = this.state;
+    if (input === '') {
       alert('请输入deskId');
       return;
     }
-    let url = `${URL}/data/statusList?deskId=${this.state.input}`;
+    let url = `${URL}/data/statusList?deskId=${input}`;
     if (this.from) {
-      url = `${URL}/data/statusList?deskId=${this.state.input}&startTime=${this.from}&endTime=${
+      url = `${URL}/data/statusList?deskId=${input}&startTime=${this.from}&endTime=${
         this.to
       }`;
     }
@@ -164,10 +126,10 @@ export default class Analysis2 extends Component {
     })
       .then(response => {
         const all = [];
-        for (let i = 0; i < response.data.data.length; i++) {
+        for (let i = 0; i < response.data.data.length; i+=1) {
           all.push({ deviceId: response.data.data[i].deviceId, data: [] });
           let oldHumanSensor = '';
-          for (let j = 0; j < response.data.data[i].historyList.length; j++) {
+          for (let j = 0; j < response.data.data[i].historyList.length; j+=1) {
             const humansensor = Number(response.data.data[i].historyList[j].humansensor);
             const x = moment(response.data.data[i].historyList[j].updatedAt).unix() * 1000;
             if (oldHumanSensor !== humansensor) {
@@ -201,7 +163,7 @@ export default class Analysis2 extends Component {
           chartData: all,
         });
       })
-      .catch((err, err2) => {
+      .catch(() => {
         this.setToken();
       });
   }
@@ -225,11 +187,8 @@ export default class Analysis2 extends Component {
   }
 
   render() {
-    const { currentTabKey, chartData, input } = this.state;
-    const { chart, loading } = this.props;
-    // const { offlineData, offlineChartData } = chart;
-    // const activeKey = currentTabKey || (offlineData[0] && offlineData[0].name);
-
+    const {  chartData, input } = this.state;
+    const {  loading } = this.props;
     return (
       <Fragment>
         <RangePicker
@@ -249,13 +208,13 @@ export default class Analysis2 extends Component {
           onChange={this.handleInputChange.bind(this)}
           onSearch={this.handleSearch.bind(this)}
           enterButton
-          value={this.state.input}
+          value={input}
         />
         <br />
         <br />
         {chartData.map((item, index) => {
           return (
-            <div style={{ paddingBottom: 30 }} key={`charaData${index}`}>
+            <div style={{ paddingBottom: 30 }} key={`charaData${index+1}`}>
               <font>传感器id：{item.deviceId}</font>
               <Card
                 loading={loading}
@@ -274,12 +233,6 @@ export default class Analysis2 extends Component {
                   />
                 )}
               </Card>
-              {/* <Chart scale={scale} height={350} data={item.data} forceFit>
-                <Axis label={label} name="month" />
-                <Axis name="value" />
-                <Tooltip crosshairs={{ type: 'y' }} />
-                <Geom type="line" position="month*value" size={2} shape="hv" />
-              </Chart> */}
             </div>
           );
         })}

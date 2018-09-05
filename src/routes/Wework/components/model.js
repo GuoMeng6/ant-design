@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-import { Link } from 'dva/router';
-import axios from 'axios';
-import { Modal} from 'antd';
-import { Input } from 'antd';
+import { Modal,Input } from 'antd';
 
 export default class LoginPage extends Component {
-  state = { visible: false }
-  dask=''
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+    }
+    this.dask = '';
+  }
+  
+  getDeskInfo(){
+    return this.desk;
+  }
 
   showModal = () => {
     this.setState({
@@ -14,30 +20,25 @@ export default class LoginPage extends Component {
     });
   }
 
-  getDeskInfo(){
-    return desk;
-  }
-
-  handleOk = (e) => {
-    console.log(e);
+  handleOk = () => {
     this.setState({
       visible: false,
     });
   }
 
-  handleCancel = (e) => {
-    console.log(e);
+  handleCancel = () => {
     this.setState({
       visible: false,
     });
   }
 
   render() {
+    const { visible } = this.state;
     return (
       <div>
         <Modal
           title="Basic Modal"
-          visible={this.state.visible}
+          visible={visible}
           onOk={this.handleOk}
           onCancel={this.handleCancel}
         >

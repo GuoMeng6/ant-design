@@ -19,7 +19,7 @@ const styles = {
   peskView2: {
     width: 24,
     height: 24,
-    backgroundColor: '#ffdedf', //浅红
+    backgroundColor: '#ffdedf',
     border: '1px solid #f34146',
     borderRadius: 4,
     position:'absolute',
@@ -37,7 +37,7 @@ const styles = {
   peskView: {
     width: 24,
     height: 24,
-    backgroundColor: '#ccedeb', //浅蓝
+    backgroundColor: '#ccedeb',
     border: '1px solid #00a699',
     borderRadius: 4,
     position:'absolute',

@@ -4,8 +4,9 @@ import { StyleSheet, css } from 'aphrodite';
 
 import Item from '../../components/sensor/Item';
 
-const URL = 'http://iotbaseapi-9am.azure-api.cn';
+const URL = process.iotbaseApi;
 let AUTH_TOKEN = '';
+
 const itemStyle = {
   itemView1: {
     width: 90,
@@ -36,6 +37,10 @@ class BatchPesk extends Component {
     this.interval = setInterval(() => {
       this.fetch();
     }, 3000);
+  }
+
+  componentWillUnmount(){
+    this.interval && clearInterval(this.interval);
   }
 
   setToken() {

@@ -28,52 +28,22 @@ const styles = {
   },
 };
 let AUTH_TOKEN = '';
-// const URL = 'https://wework2018apis-dev.azure-api.cn';
-const URL = 'http://iotbaseapi-9am.azure-api.cn';
+const URL = process.iotbaseApi;
 const params = [
-  '8392915e-e3fc-4d9a-ad3f-3d60a72bf8a2', // 微软
-  // '5ee6ad20-fa29-4e71-9021-376a0da49e56', //测试1 原先的pesk15
-  // '31559176-5f3b-4dce-88dd-6e0bf1a48056', //测试2
+  '8392915e-e3fc-4d9a-ad3f-3d60a72bf8a2',
 ];
 
 class App extends Component {
   constructor(props) {
     super(props);
     const defaultData = [];
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < 1; i+=1) {
       defaultData.push({ active: false, value: i + 1 });
     }
     this.url = this.getUrl();
     this.state = {
       list: defaultData,
     };
-  }
-
-  setToken() {
-    axios({
-      method: 'post',
-      url: `${URL  }/api/token`,
-      data: {
-        unique_name: 'microsoft@9amtech.com',
-        password: 'Saga8798',
-      },
-    }).then(response => {
-      if (response.data && response.data.status === 'success') {
-        AUTH_TOKEN = response.data.data;
-      }
-    });
-  }
-
-  getUrl() {
-    let url = `${URL  }/desks/status?`;
-    params.forEach((value, index) => {
-      if (index === 0) {
-        url = `${url  }deskId=${  value}`;
-      } else {
-        url = `${url  }&deskId=${  value}`;
-      }
-    });
-    return url;
   }
 
   componentDidMount() {
@@ -83,46 +53,23 @@ class App extends Component {
     }, 2000);
   }
 
-  fetch() {
-    const that = this;
-    axios({
-      method: 'get',
-      url: this.url,
-      headers: {
-        Authorization: `Bearer ${  AUTH_TOKEN}`,
-        'Ocp-Apim-Trace': true,
-        'Content-type': 'application/x-www-form-urlencoded',
-      },
-    })
-      .then(response => {
-        if (response.status === 200) {
-          const data = [];
-          const resData = response.data.data;
-          for (let i = 0; i < 1; i++) {
-            for (let j = 0; j < 1; j++) {
-              const devices = resData[j].devices[0];
-              if (params[i] === resData[j].id) {
-                data.push({
-                  ...resData[j],
-                  active: (devices && devices.deviceTwin && devices.deviceTwin.humansensor) === 1,
-                  value: i + 1,
-                });
-                break;
-              }
-            }
-          }
-          that.updateList(data);
-        } else {
-          that.updateList(that.defaultData);
-        }
-      })
-      .catch(() => {});
+  onChange(value) {
+    switch (value.target.value) {
+      case '1':
+        this.onClick(110);
+        break;
+      case '2':
+        this.onClick(75);
+        break;
+      case '3':
+        const data = this.state.list[0];
+        this.setLockStatus(data.locked === 'on' ? 'off' : 'on');
+        break;
+      default:
+        break;
+    }
   }
-
-  updateList(list) {
-    this.setState({ list });
-  }
-
+  
   onClick(height) {
     axios({
       method: 'put',
@@ -133,9 +80,8 @@ class App extends Component {
         height,
       },
     })
-      .then(res => {})
-      .catch((err, data) => {
-        // console.log('======== err =======', { err, data });
+      .then(() => {})
+      .catch((err) => {
         if (err && err.response && err.response.status === 400) {
           alert('硬件连接异常');
           return;
@@ -146,6 +92,21 @@ class App extends Component {
         }
         alert(err.response.data.message);
       });
+  }
+
+  setToken() {
+    axios({
+      method: 'post',
+      url: `${URL}/api/token`,
+      data: {
+        unique_name: 'microsoft@9amtech.com',
+        password: 'Saga8798',
+      },
+    }).then(response => {
+      if (response.data && response.data.status === 'success') {
+        AUTH_TOKEN = response.data.data;
+      }
+    });
   }
 
   setLockStatus(status) {
@@ -164,7 +125,7 @@ class App extends Component {
           alert('设置失败');
         }
       })
-      .catch((err, data) => {
+      .catch((err) => {
         if (err && err.response && err.response.status === 400) {
           alert('硬件连接异常');
           return;
@@ -177,21 +138,56 @@ class App extends Component {
       });
   }
 
-  onChange(value) {
-    switch (value.target.value) {
-      case '1':
-        this.onClick(110);
-        break;
-      case '2':
-        this.onClick(75);
-        break;
-      case '3':
-        const data = this.state.list[0];
-        this.setLockStatus(data.locked === 'on' ? 'off' : 'on');
-        break;
-      default:
-        break;
-    }
+  getUrl() {
+    let url = `${URL}/desks/status?`;
+    params.forEach((value, index) => {
+      if (index === 0) {
+        url = `${url  }deskId=${  value}`;
+      } else {
+        url = `${url  }&deskId=${  value}`;
+      }
+    });
+    return url;
+  }
+
+  updateList(list) {
+    this.setState({ list });
+  }
+  
+  fetch() {
+    const that = this;
+    axios({
+      method: 'get',
+      url: this.url,
+      headers: {
+        Authorization: `Bearer ${  AUTH_TOKEN}`,
+        'Ocp-Apim-Trace': true,
+        'Content-type': 'application/x-www-form-urlencoded',
+      },
+    })
+      .then(response => {
+        if (response.status === 200) {
+          const data = [];
+          const resData = response.data.data;
+          for (let i = 0; i < 1; i+=1) {
+            for (let j = 0; j < 1; j+=1) {
+              const devices = resData[j].devices[0];
+              if (params[i] === resData[j].id) {
+                data.push({
+                  ...resData[j],
+                  active: (devices && devices.deviceTwin && devices.deviceTwin.humansensor) === 1,
+                  value: i + 1,
+                });
+                break;
+              }
+            }
+          }
+          that.updateList(data);
+        } else {
+          that.updateList(that.defaultData);
+        }
+      })
+      .catch(() => {});
   }
 
   render() {

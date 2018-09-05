@@ -25,6 +25,7 @@ export default class Header extends Component {
     return (
       <div style={styles.container}>
         <img
+          alt=""
           src="http://otlb76s3r.bkt.clouddn.com/furniture/logo@3x.png"
           style={styles.img}
         />

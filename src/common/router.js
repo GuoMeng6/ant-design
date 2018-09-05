@@ -170,9 +170,6 @@ export const getRouterData = app => {
     '/user/register-result': {
       component: dynamicWrapper(app, [], () => import('../routes/User/RegisterResult')),
     },
-    '/App': {
-      component: dynamicWrapper(app, [], () => import('../routes/Wework/App')),
-    },
     // 查询页面
     '/weworkpush': {
       component: dynamicWrapper(app, [], () => import('../routes/Wework/WeworkPush')),

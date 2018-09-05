@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'dva/router';
 import { Modal } from 'antd';
-import { Input } from 'antd';
 import axios from 'axios';
 import styles from './Wework.less';
 
-const URL = 'https://wework2018apis.azure-api.cn';
+const URL = process.weworkApi;
 let AUTH_TOKEN = '';
 let number = 0;
 const params = [
@@ -49,32 +47,50 @@ const params = [
   '89dd0fcd-acff-4d9f-aa78-e23361d71a3c',
 ];
 export default class Weworkclick extends Component {
-  state = { visible: false, desk: params[number] };
-
-  htmlId = '';
-
-  showModal = () => {
-    this.setState({
-      visible: true,
-    });
-  };
-
-  // onChange(desk){
-  //   this.setState({desk:desk.target.value});
-  // }
-
-  handleOk = e => {
-    this.putUp();
-    this.setState({
+  constructor(props) {
+    super(props);
+    this.state = {
       visible: false,
-    });
-  };
+      desk: params[number],
+    }
+    this.htmlId = '';
+  }
 
-  handleCancel = e => {
-    this.setState({
-      visible: false,
-    });
-  };
+  componentDidMount() {
+    this.setToken();
+    const that = this;
+    const a = document.getElementById('balphasvgc');
+    a.addEventListener(
+      'load',
+      () => {
+        // get the inner DOM of alpha.svg
+        const svgDoc = a.contentDocument;
+        // get the inner element by id
+        const delta = svgDoc.getElementsByTagName('rect');
+        // add behaviour
+        for (let i = 0; i < delta.length; i+=1) {
+          delta[i].addEventListener(
+            'mousedown',
+            () => {
+              if (
+                delta[i].getAttribute('fill') === '#FFD6D6' ||
+                delta[i].getAttribute('fill') === '#00A699' ||
+                delta[i].getAttribute('fill') === '#F5CECE' ||
+                delta[i].getAttribute('fill') === '#CCEDEB'
+              ) {
+                delta[i].setAttribute('stroke', '#654df6');
+                delta[i].setAttribute('fill', '#654df6');
+                that.htmlId = delta[i].getAttribute('id');
+                that.showModal();
+              }
+            },
+            false
+          );
+        }
+      },
+      false
+    );
+  }
 
   setToken() {
     axios({
@@ -87,67 +103,53 @@ export default class Weworkclick extends Component {
     });
   }
 
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+
+  handleOk = () => {
+    this.putUp();
+    this.setState({
+      visible: false,
+    });
+  };
+
+  handleCancel = () => {
+    this.setState({
+      visible: false,
+    });
+  };
+
   putUp() {
+    const { desk } = this.state;
     axios({
       methods: 'get',
-      url: `${URL}/desk/updateDeskHtmlId?htmlId=${this.htmlId}&deskId=${this.state.desk}`,
+      url: `${URL}/desk/updateDeskHtmlId?htmlId=${this.htmlId}&deskId=${desk}`,
       dataType: 'json',
       data: {
         htmlId: this.htmlId,
-        deskId: this.state.desk,
+        deskId: desk,
       },
       headers: {
         Authorization: AUTH_TOKEN,
         'Ocp-Apim-Trace': true,
         'Content-type': 'application/x-www-form-urlencoded',
       },
-    }).then(response => {
-      number++;
+    }).then(() => {
+      number+=1;
       this.state.desk = params[number];
       this.htmlId = '';
     });
   }
 
-  componentDidMount() {
-    this.setToken();
-    const _this = this;
-    const a = document.getElementById('balphasvgc');
-    a.addEventListener(
-      'load',
-      () => {
-        // get the inner DOM of alpha.svg
-        const svgDoc = a.contentDocument;
-        // get the inner element by id
-        const delta = svgDoc.getElementsByTagName('rect');
-        // add behaviour
-        for (let i = 0; i < delta.length; i++) {
-          delta[i].addEventListener(
-            'mousedown',
-            () => {
-              if (
-                delta[i].getAttribute('fill') === '#FFD6D6' ||
-                delta[i].getAttribute('fill') === '#00A699' ||
-                delta[i].getAttribute('fill') === '#F5CECE' ||
-                delta[i].getAttribute('fill') === '#CCEDEB'
-              ) {
-                delta[i].setAttribute('stroke', '#654df6');
-                delta[i].setAttribute('fill', '#654df6');
-                _this.htmlId = delta[i].getAttribute('id');
-                _this.showModal();
-              }
-            },
-            false
-          );
-        }
-      },
-      false
-    );
-  }
-
   render() {
+    const { visible, desk } = this.state;
     return (
       <div className={styles.main}>
         <iframe
+          title="balphasvgc"
           src={require('./img/beijingroot.svg')}
           width="1024px"
           height="768px"
@@ -159,13 +161,11 @@ export default class Weworkclick extends Component {
         />
         <Modal
           title="Basic Modal"
-          visible={this.state.visible}
+          visible={visible}
           onOk={this.handleOk}
           onCancel={this.handleCancel}
         >
-          {/* <Input placeholder="请输入id" value={this.state.desk} onChange={this.onChange.bind(this)}/> */}
-          {/* <Input placeholder="请输入id" value={this.state.desk}/> */}
-          <p>{this.state.desk}</p>
+          <p>{desk}</p>
         </Modal>
       </div>
     );

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Animated from 'animated/lib/targets/react-dom';
-import Easing from 'animated/lib/Easing';
 
 const styles = {
   peskView: {

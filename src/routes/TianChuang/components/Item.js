@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Animated from 'animated/lib/targets/react-dom';
-import Easing from 'animated/lib/Easing';
 
 const styles = {
   peskView: {
@@ -17,7 +16,6 @@ const styles = {
     border: '1px solid #00a699',
   },
   peskView2: {
-    position: 'relative',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
@@ -33,7 +31,6 @@ const styles = {
     border: '1px solid #f34146',
   },
   peskView3: {
-    position: 'relative',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
@@ -54,9 +51,7 @@ class Item extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      opacity: 0,
       anim: props.data.active ? new Animated.Value(1) : new Animated.Value(0),
-      // anim: props.data.status === '离线' ? new Animated.Value(1) : new Animated.Value(0),
     };
   }
 
@@ -70,19 +65,22 @@ class Item extends Component {
   }
 
   startAnim() {
-    Animated.timing(this.state.anim, { toValue: 1, duration: 300 }).start();
+    const { anim } = this.state; 
+    Animated.timing(anim, { toValue: 1, duration: 300 }).start();
   }
 
   endAnim() {
-    Animated.timing(this.state.anim, { toValue: 0, duration: 300 }).start();
+    const { anim } = this.state; 
+    Animated.timing(anim, { toValue: 0, duration: 300 }).start();
   }
 
   render() {
-    const { data, title, style, hideValue } = this.props;
+    const { anim } = this.state; 
+    const { data, style } = this.props;
     const status = data.devices && data.devices[0] && data.devices[0].deviceTwin && data.devices[0].deviceTwin.status;
     return (
       <div style={Object.assign({}, styles.peskView, style)}>
-        <Animated.div style={Object.assign({}, styles.peskView2, { opacity: this.state.anim })}>
+        <Animated.div style={Object.assign({}, styles.peskView2, { opacity: anim })}>
           <font style={{ fontSize: 30, color: '#f34146' }}>{data.value}</font>
         </Animated.div>
         <font style={{ fontSize: 30, color: '#00a699' }}>{data.value}</font>

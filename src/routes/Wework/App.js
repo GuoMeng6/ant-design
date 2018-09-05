@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-
 import Key from './components/Key';
-import Line from './components/Line';
-import Door from './components/Door';
 
 const styles = {
   center: {
@@ -19,7 +16,6 @@ const styles = {
     width: '1000px',
     height: '3400px',
     display: 'flex',
-    // margin: '0 auto',
     marginLeft: '0',
     marginRight: '0',
     flexDirection: 'column',
@@ -50,8 +46,7 @@ const styles = {
     marginTop: 20,
   },
 };
-// const URL = 'https://wework2018apis-dev.azure-api.cn';
-const URL = 'https://wework2018apis.azure-api.cn';
+const URL = process.weworkApi;
 let AUTH_TOKEN = '';
 const params = [
   '26cf02ea-9b1b-4d67-b5f3-bf4b68009bae',
@@ -127,7 +122,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     const defaultData = [];
-    for (let i = 0; i < 170; i++) {
+    for (let i = 0; i < 170; i+=1) {
       defaultData.push({ active: false, value: i + 1 });
     }
     this.url = this.getUrl();
@@ -136,26 +131,21 @@ class App extends Component {
     };
   }
 
-  getUrl() {
-    let url = `${URL}/desk/deskStatus?`;
-    params.forEach((value, index) => {
-      if (value) {
-        // if (index === 2) {
-        //   url = url + 'deskId=' + value;
-        // } else {
-        //   url = url + '&deskId=' + value;
-        // }
-        url = `${url}&deskId=${value}`;
-      }
-    });
-    return url;
-  }
-
   componentDidMount() {
     this.setToken();
     this.interval = setInterval(() => {
       this.fetch();
-    }, 4000);
+    }, 3000);
+  }
+
+  getUrl() {
+    let url = `${URL}/desk/deskStatus?`;
+    params.forEach((value) => {
+      if (value) {
+        url = `${url}&deskId=${value}`;
+      }
+    });
+    return url;
   }
 
   setToken() {
@@ -182,12 +172,11 @@ class App extends Component {
       },
     })
       .then(response => {
-        // console.log('======== response ========', response);
         if (response.status === 200) {
           const data = [];
           const resData = response.data.data;
-          for (let i = 0; i < params.length; i++) {
-            for (let j = 0; j < resData.length; j++) {
+          for (let i = 0; i < params.length; i+=1) {
+            for (let j = 0; j < resData.length; j+=1) {
               if (params[i] === '') {
                 data.push({ value: '' });
                 break;
@@ -202,14 +191,12 @@ class App extends Component {
               }
             }
           }
-          // console.log('========= data ======= ', data);
           that.updateList(data);
         } else {
           that.updateList(that.defaultData);
         }
       })
-      .catch((err, err2) => {
-        // console.log('======== err ========', err, err2);
+      .catch(() => {
         that.setToken();
       });
   }
@@ -219,30 +206,11 @@ class App extends Component {
   }
 
   render() {
-    const { list } = this.state;
     return (
       <div className="Center">
         <div className="App">
           <div style={styles.app2}>
             <Key />
-            {/* <Door /> */}
-            {/* <Line data={list.slice(0, 10)} title="第一排" />
-            <Line data={list.slice(10, 20)} title="第二排" />
-            <Line data={list.slice(20, 30)} title="第三排" />
-            <Line data={list.slice(30, 40)} title="第四排" />
-            <Line data={list.slice(40, 50)} title="第五排" />
-            <Line data={list.slice(50, 60)} title="第六排" />
-            <Line data={list.slice(60, 70)} title="第七排" /> */}
-            {/* <Line data={list.slice(70, 80)} title="第八排" />
-            <Line data={list.slice(80, 90)} title="第九排" />
-            <Line data={list.slice(90, 100)} title="第十排" />
-            <Line data={list.slice(100, 110)} title="第11排" />
-            <Line data={list.slice(110, 120)} title="第12排" />
-            <Line data={list.slice(120, 130)} title="第13排" />
-            <Line data={list.slice(130, 140)} title="第14排" />
-            <Line data={list.slice(140, 150)} title="第15排" />
-            <Line data={list.slice(150, 160)} title="第16排" />
-            <Line data={list.slice(160, 170)} title="第17排" /> */}
           </div>
         </div>
       </div>

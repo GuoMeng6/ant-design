@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Button from 'antd/lib/button';
 
 import { Radio } from 'antd';
 import 'antd/lib/button/style/css';
-import 'antd/lib/radio/style/css';
+import 'antd/lib/radio/style/css'; 
+
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
 
@@ -85,9 +85,7 @@ class MyButtonGroup extends Component {
 
   render() {
     const { onChange, data } = this.props;
-    // if (!data.height) {
-    //   return <div style={{ height: 60 }} />;
-    // }
+    const { value } = this.state;
     return (
       <div style={styles.container}>
         <RadioGroup
@@ -95,29 +93,29 @@ class MyButtonGroup extends Component {
             this.group = o;
           }}
           size="large"
-          onChange={value => {
-            onChange(value);
+          onChange={(group) => {
+            onChange(group);
             this.blur();
-            this.setValue(value.target.value);
+            this.setValue(group.target.value);
           }}
           defaultValue="4"
           style={{ display: 'flex', flexDirection: 'row' }}
         >
           <RadioButton
-            style={Object.assign({}, styles.left, this.state.value === '1' ? styles.selected : {}, data.locked === 'on' ? styles.locked : {})}
+            style={Object.assign({}, styles.left, value === '1' ? styles.selected : {}, data.locked === 'on' ? styles.locked : {})}
             disabled={data.locked === 'on'}
             value="1"
           >
             110cm
           </RadioButton>
           <RadioButton
-            style={Object.assign({}, styles.center, this.state.value === '2' ? styles.selected : {}, data.locked === 'on' ? styles.locked : {})}
+            style={Object.assign({}, styles.center, value === '2' ? styles.selected : {}, data.locked === 'on' ? styles.locked : {})}
             disabled={data.locked === 'on'}
             value="2"
           >
             75cm
           </RadioButton>
-          <RadioButton style={Object.assign({}, styles.right, this.state.value === '3' ? styles.selected : {})} value="3">
+          <RadioButton style={Object.assign({}, styles.right, value === '3' ? styles.selected : {})} value="3">
             {data.locked === 'on' ? 'unLock' : 'Lock'}
           </RadioButton>
         </RadioGroup>

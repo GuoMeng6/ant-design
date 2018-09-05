@@ -50,7 +50,7 @@ const styles = {
   },
 };
 // const URL = 'https://wework2018apis-dev.azure-api.cn';
-const URL = 'http://iotbaseapi-9am.azure-api.cn';
+const URL = process.iotbaseApi;
 let AUTH_TOKEN = '';
 const params = [
   '', // 1
@@ -118,6 +118,13 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    this.setToken();
+    this.interval = setInterval(() => {
+      this.fetch();
+    }, 3000);
+  }
+
   getUrl() {
     let url = `${URL  }/desks/status?`;
     params.forEach((value, index) => {
@@ -130,13 +137,6 @@ class App extends Component {
       }
     });
     return url;
-  }
-
-  componentDidMount() {
-    this.setToken();
-    this.interval = setInterval(() => {
-      this.fetch();
-    }, 2000);
   }
 
   setToken() {
@@ -170,8 +170,8 @@ class App extends Component {
         if (response.data.status === 'success') {
           const data = [];
           const resData = response.data.data;
-          for (let i = 0; i < params.length; i++) {
-            for (let j = 0; j < resData.length; j++) {
+          for (let i = 0; i < params.length; i+=1) {
+            for (let j = 0; j < resData.length; j+=1) {
               if (params[i] === '') {
                 data.push({ value: '' });
                 break;
@@ -196,7 +196,7 @@ class App extends Component {
           that.updateList(that.defaultData);
         }
       })
-      .catch(err => {
+      .catch(() => {
         that.setToken();
       });
   }

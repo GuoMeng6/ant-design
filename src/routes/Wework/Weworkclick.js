@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'dva/router';
 import { Modal} from 'antd';
-import { Input } from 'antd';
 import axios from 'axios';
 import styles from './Wework.less';
 
-
-const URL = 'https://wework2018apis.azure-api.cn';
+const URL = process.weworkApi;
 let AUTH_TOKEN = '';
-let number=0;
+let number = 0;
 const params = [
   'a776ba3b-b342-4913-a0ba-51a632d69689',
   'e3e6c7a4-0ef4-41a4-9e1d-9d392e6048d1',
@@ -106,32 +103,38 @@ const params = [
   '135f866b-f0b1-4521-97c6-ee26b2cb7139',
   ];
 export default class Weworkclick extends Component {
-  state = { visible: false, desk:params[number] }
-  htmlId=''
-
-  showModal = () => {
-    this.setState({
-      visible: true,
-    });
-  }
-
-  // onChange(desk){
-  //   this.setState({desk:desk.target.value});
-  // }
-
-  handleOk = (e) => {
-    this.putUp();
-    this.setState({
+  constructor(props) {
+    super(props);
+    this.state = {
       visible: false,
-    });
-  }
-
-  handleCancel = (e) => {
-    this.setState({
-      visible: false,
-    });
+      desk: params[number],
+    }
+    this.htmlId = '';
   }
   
+  componentDidMount() {
+    this.setToken();
+    const that=this;
+    const a = document.getElementById("alphasvgc");
+    a.addEventListener("load", () => {
+      // get the inner DOM of alpha.svg
+      const svgDoc = a.contentDocument;
+      // get the inner element by id
+      const delta = svgDoc.getElementsByTagName("rect");
+      // add behaviour
+      for(let i=0;i<delta.length;i+=1){
+        delta[i].addEventListener("mousedown", () => {
+          if(delta[i].getAttribute('fill')==='#FFD6D6' || delta[i].getAttribute('fill')==='#00A699' || delta[i].getAttribute('fill')==='#F5CECE' || delta[i].getAttribute('fill')==='#CCEDEB'){
+            delta[i].setAttribute('stroke','#654df6');
+            delta[i].setAttribute('fill','#654df6');
+            that.htmlId=delta[i].getAttribute('id');
+            that.showModal();
+          }
+        }, false);
+      }
+     }, false);
+  }
+
   setToken() {
     axios({
       methods: 'get',
@@ -142,66 +145,73 @@ export default class Weworkclick extends Component {
       }
     });
   }
-  putUp(){
+  
+
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  }
+
+  handleOk = () => {
+    this.putUp();
+    this.setState({
+      visible: false,
+    });
+  }
+
+  handleCancel = () => {
+    this.setState({
+      visible: false,
+    });
+  }
+
+  putUp() {
+    const { desk } = this.state;
     axios({
       methods:'get',
-      url:`${URL}/desk/updateDeskHtmlId?htmlId=${this.htmlId}&deskId=${this.state.desk}`,
+      url:`${URL}/desk/updateDeskHtmlId?htmlId=${this.htmlId}&deskId=${desk}`,
       dataType: "json",
       data:{
         htmlId:this.htmlId,
-        deskId:this.state.desk
+        deskId:desk,
       },
       headers:{
         Authorization: AUTH_TOKEN,
         'Ocp-Apim-Trace': true,
         'Content-type': 'application/x-www-form-urlencoded',
-      }
-    }).then((response)=>{
-      number++;
+      },
+    }).then(()=>{
+      number+=1;
       this.state.desk=params[number];
       this.htmlId='';
     });
-
-  }
-  componentDidMount() {
-    this.setToken();
-    let _this=this;
-    let a = document.getElementById("alphasvgc");
-    a.addEventListener("load",function(){
-        // get the inner DOM of alpha.svg
-        let svgDoc = a.contentDocument;
-        // get the inner element by id
-        let delta = svgDoc.getElementsByTagName("rect");
-        // add behaviour
-        for(let i=0;i<delta.length;i++){
-          delta[i].addEventListener("mousedown",function(){
-              if(delta[i].getAttribute('fill')==='#FFD6D6' || delta[i].getAttribute('fill')==='#00A699' || delta[i].getAttribute('fill')==='#F5CECE' || delta[i].getAttribute('fill')==='#CCEDEB'){
-                  delta[i].setAttribute('stroke','#654df6');
-                  delta[i].setAttribute('fill','#654df6');
-                  _this.htmlId=delta[i].getAttribute('id');
-                  _this.showModal();
-              }
-          }, false);
-        }
-    }, false);
   }
 
   render() {
+    const { visible, desk } = this.state;
     return (
       <div className={styles.main}>
-        <iframe src={require("./img/nanjingroot.svg")} width="1024px" height="768px" id="alphasvgc"
-        frameborder="0" marginheight="0" marginwidth="0" scrolling="no"></iframe>
+        <iframe 
+          title="alphasvgc"
+          src={require("./img/nanjingroot.svg")}
+          width="1024px"
+          height="768px"
+          id="alphasvgc"
+          frameBorder="0"
+          marginHeight="0"
+          marginWidth="0"
+          scrolling="no"
+        />
         <Modal
           title="Basic Modal"
-          visible={this.state.visible}
+          visible={visible}
           onOk={this.handleOk}
           onCancel={this.handleCancel}
         >
-          {/* <Input placeholder="请输入id" value={this.state.desk} onChange={this.onChange.bind(this)}/> */}
-          {/* <Input placeholder="请输入id" value={this.state.desk}/> */}
-          <p>{this.state.desk}</p>
+          <p>{desk}</p>
         </Modal>
-       </div>
+      </div>
     );
   }
 }

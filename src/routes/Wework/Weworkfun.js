@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
-import { Link } from 'dva/router';
 import axios from 'axios';
 
-import Key from './components/Key';
 import styles from './Wework.less';
 
-const URL = 'https://wework2018apis.azure-api.cn';
+const URL = process.weworkApi;
 let AUTH_TOKEN = '';
 const params = [
   '26cf02ea-9b1b-4d67-b5f3-bf4b68009bae',
@@ -54,16 +52,13 @@ export default class Wework extends Component {
   constructor(props) {
     super(props);
     const defaultData = [];
-    for (let i = 0; i < 67; i++) {
+    for (let i = 0; i < 67; i+=1) {
       defaultData.push({
         active: false,
         value: i + 1,
       });
     }
     this.url = this.getUrl();
-    this.state = {
-      list: defaultData,
-    };
   }
 
   componentDidMount() {
@@ -79,43 +74,12 @@ export default class Wework extends Component {
 
   getUrl() {
     let url = `${URL}/desk/deskStatusInfos?`;
-    params.forEach((value, index) => {
+    params.forEach((value) => {
       if (value) {
         url = `${url}&deskId=${value}`;
       }
     });
     return url;
-  }
-
-  listen(id, stroke, fill, opacity, deskId) {
-    const that = this;
-    const rect = document.getElementById('balphasvg').contentDocument.getElementsByTagName('rect');
-    for (let i = 0; i < rect.length; i++) {
-      if (rect[i].getAttribute('id') == id) {
-        // 循环改变颜色
-        rect[i].setAttribute('stroke', `${stroke}`);
-        rect[i].setAttribute('fill', `${fill}`);
-        rect[i].setAttribute('fill-opacity', opacity);
-        // 为小方块绑定click事件
-        // rect[i].onclick = function() {
-        //   that.updateChart(deskId);
-        //   window.location.href = `${window.location.origin}/#/analysis2`;
-        // };
-      }
-    }
-  }
-
-  updateChart(value) {
-    this.props.dispatch({ type: 'chart/updateDeskId', payload: value });
-  }
-
-  // 0无人  1有人  2离线
-  peopleSensor(data) {
-    const { humansensor, status } = data.deviceTwin;
-    if (status === '离线') {
-      return 2;
-    }
-    return humansensor;
   }
 
   setToken() {
@@ -127,6 +91,32 @@ export default class Wework extends Component {
         AUTH_TOKEN = response.data.data;
       }
     });
+  }
+
+  // 0无人  1有人  2离线
+  peopleSensor(data) {
+    const { humansensor, status } = data.deviceTwin;
+    if (status === '离线') {
+      return 2;
+    }
+    return humansensor;
+  }
+
+  updateChart(value) {
+    const { dispatch } = this.props;
+    dispatch({ type: 'chart/updateDeskId', payload: value });
+  }
+
+  listen(id, stroke, fill, opacity) {
+    const rect = document.getElementById('balphasvg').contentDocument.getElementsByTagName('rect');
+    for (let i = 0; i < rect.length; i+=1) {
+      if (rect[i].getAttribute('id') === id) {
+        // 循环改变颜色
+        rect[i].setAttribute('stroke', `${stroke}`);
+        rect[i].setAttribute('fill', `${fill}`);
+        rect[i].setAttribute('fill-opacity', opacity);
+      }
+    }
   }
 
   fetch() {
@@ -143,9 +133,9 @@ export default class Wework extends Component {
       .then(response => {
         if (response.status === 200) {
           const all = response.data.data;
-          for (let i = 0; i < all.length; i++) {
+          for (let i = 0; i < all.length; i+=1) {
             let count = 0;
-            for (let j = 0; j < all[i].devices.length; j++) {
+            for (let j = 0; j < all[i].devices.length; j+=1) {
               if (that.peopleSensor(all[i].devices[j]) === 1) {
                 that.listen(all[i].htmlId, '#FA7676', '#F5CECE', 1, all[i].id);
                 break;
@@ -154,7 +144,7 @@ export default class Wework extends Component {
                 that.listen(all[i].htmlId, '#00A699', '#00A699', 0.2, all[i].id);
               }
               if (that.peopleSensor(all[i].devices[j]) === 2) {
-                count++;
+                count+=1;
                 if (count === all[i].devices.length) {
                   that.listen(all[i].htmlId, '#666666', '#cccccc', 1, all[i].id);
                 }
@@ -163,8 +153,7 @@ export default class Wework extends Component {
           }
         }
       })
-      .catch((err, err2) => {
-        console.log('======== err ========', err, err2);
+      .catch(() => {
         this.setToken();
       });
   }
@@ -173,7 +162,7 @@ export default class Wework extends Component {
     return (
       <div className={styles.main}>
         <iframe
-          // src="http://popularize.9-a-m.com/svg/static/beijing.svg"
+          title="balphasvg"
           src={require('./img/beijing.svg')}
           width="1024px"
           height="768px"

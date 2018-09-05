@@ -8,6 +8,10 @@ export default {
       extraBabelPlugins: ['dva-hmr'],
     },
   },
+  "define": {
+    "process.iotbaseApi": JSON.parse(process.env.WEWORK)[process.env.ENV].iotbaseApi,
+    "process.weworkApi": JSON.parse(process.env.WEWORK)[process.env.ENV].weworkApi,
+  },
   externals: {
     '@antv/data-set': 'DataSet',
     rollbar: 'rollbar',
@@ -24,7 +28,6 @@ export default {
     javascriptEnabled: true,
   },
   disableDynamicImport: false,
-  // publicPath: '/',
-  publicPath: 'http://popularize.9-a-m.com/west/',
+  publicPath: JSON.parse(process.env.WEWORK)[process.env.ENV].publicPath,
   hash: true,
 };

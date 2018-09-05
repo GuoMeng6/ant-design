@@ -40,7 +40,7 @@ const styles = {
   },
 }
 
-const URL = 'http://iotbaseapi-9am.azure-api.cn';
+const URL = process.iotbaseApi;
 let AUTH_TOKEN = '';
 const params = [
   'f7b735d3-56da-4dc4-8307-6dd7144d56af', // 42
@@ -67,10 +67,6 @@ class Pesk extends Component {
       this.fetch();
     }, 2000);
   }
-
-  // componentWillUnmount() {
-  //   this.interval && clearInterval(this.interval);
-  // }
 
   setToken() {
     axios({
